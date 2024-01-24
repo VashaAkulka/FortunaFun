@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#18253c"
+    android:id="@+id/drawerLayout"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,17 +21,26 @@
                 android:id="@+id/imageView3"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="0.3"
                 android:layout_margin="15dp"
-                app:srcCompat="@drawable/baseline_arrow_back_24" />
+                android:layout_weight="0.15"
+                android:onClick="navigationPanel"
+                app:srcCompat="@drawable/icon_menu" />
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="0.3"
+                android:layout_weight="0.2"
                 android:layout_margin="15dp"
                 app:srcCompat="@drawable/baseline_cached_24" />
+
+            <ImageView
+                android:id="@+id/Sound"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:layout_weight="0.15"
+                app:srcCompat="@drawable/icon_with_sound" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -64,7 +74,7 @@
                         android:layout_height="match_parent"
                         android:textColor="#FFFFFF"
                         android:gravity="center|top"
-                        android:text="10000 BYN"/>
+                        android:text="100 FAN"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -72,34 +82,36 @@
 
 
         <ImageView
-            android:id="@+id/Roulet"
+            android:id="@+id/roulette"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
 
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.262"
-            app:srcCompat="@drawable/roulet" />
+            app:layout_constraintVertical_bias="0.345"
+            app:srcCompat="@drawable/roulette" />
 
         <Button
-            android:id="@+id/buttonRoulet"
-            android:clickable="false"
+            android:id="@+id/buttonRoulette"
             android:layout_width="180dp"
             android:layout_height="180dp"
-
             android:backgroundTint="#173d5b"
-            android:text="Сделайте ставку"
 
+            android:clickable="false"
+            android:onClick="rotateRoulette"
+
+            android:text="Сделайте ставку"
             android:textColor="#50FFFFFF"
             android:textSize="25dp"
-            app:layout_constraintBottom_toBottomOf="@id/Roulet"
-            app:layout_constraintEnd_toEndOf="@id/Roulet"
-            app:layout_constraintStart_toStartOf="@id/Roulet"
-            app:layout_constraintTop_toTopOf="@id/Roulet" />
+            app:layout_constraintBottom_toBottomOf="@id/roulette"
+            app:layout_constraintEnd_toEndOf="@id/roulette"
+            app:layout_constraintStart_toStartOf="@id/roulette"
+            app:layout_constraintTop_toTopOf="@id/roulette" />
+
 
         <LinearLayout
             android:id="@+id/linear"
@@ -110,8 +122,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Roulet"
-            app:layout_constraintVertical_bias="0.137">
+            app:layout_constraintTop_toBottomOf="@id/roulette"
+            app:layout_constraintVertical_bias="0.096">
 
             <Button
                 android:id="@+id/buttonRed"
@@ -123,8 +135,8 @@
                 android:gravity="right|bottom"
                 android:paddingRight="10dp"
                 android:text="2x"
-                android:textSize="25dp"
                 android:textColor="#50FFFFFF"
+                android:textSize="25dp"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -136,27 +148,26 @@
                 android:backgroundTint="#62ae34"
                 android:gravity="right|bottom"
                 android:paddingRight="10dp"
-                android:textColor="#50FFFFFF"
                 android:text="5x"
+                android:textColor="#50FFFFFF"
                 android:textSize="25dp"
                 app:cornerRadius="0dp" />
 
             <Button
                 android:id="@+id/buttonBlack"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:backgroundTint="#5d6766"
                 android:gravity="right|bottom"
                 android:paddingRight="10dp"
                 android:text="2x"
-                android:textSize="25dp"
                 android:textColor="#50FFFFFF"
+                android:textSize="25dp"
                 app:cornerRadius="0dp" />
         </LinearLayout>
-        
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,7 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:text="150 BYN"
+                    android:text="150 FAN"
                     android:lineSpacingExtra="6dp"
                     android:textColor="#FFFFFF"
                     android:gravity="end" />
@@ -186,7 +197,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:text="75 BYN\n75 BYN"
+                    android:text="75 FAN\n75 FAN"
                     android:lineSpacingExtra="6dp"
                     android:textColor="#FFFFFF"
                     android:gravity="end" />
@@ -202,7 +213,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:lineSpacingExtra="6dp"
-                    android:text="50 BYN\n50 BYN\n50 BYN"
+                    android:text="50 FAN\n50 FAN\n50 FAN"
                     android:textColor="#FFFFFF"
                     android:gravity="end" />
             </LinearLayout>
@@ -222,6 +233,7 @@
                 android:layout_margin="20dp">
 
                 <Button
+                    android:id="@+id/buttonMinus"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -229,6 +241,7 @@
                     android:backgroundTint="#1a4769"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
+                    android:onClick="changeBet"
                     android:padding="0dp"
                     android:text="-" />
 
@@ -258,26 +271,29 @@
                         android:layout_weight="1">
 
                         <TextView
+                            android:id = "@+id/bet"
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:layout_height="match_parent"
                             android:textColor="#FFFFFF"
                             android:gravity="center|top"
-                            android:text="1 BYN"/>
+                            android:text="1"/>
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/buttonPlus"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:text="+"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#1a4769"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    android:layout_margin="10dp"
+                    android:onClick="changeBet"
                     android:padding="0dp"
-                    android:backgroundTint="#1a4769"/>
+                    android:text="+" />
 
             </LinearLayout>
 
@@ -316,12 +332,22 @@
                         android:layout_height="match_parent"
                         android:textColor="#FFFFFF"
                         android:gravity="center|top"
-                        android:text="100 BYN"/>
+                        android:text="100 FAN"/>
                 </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/roulette"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/roulette_arrow" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -332,10 +358,7 @@
         android:layout_gravity="start"
         app:menu="@menu/main_menu"
         android:background="#1a4769"
-        app:itemIconSize="35dp"
         app:itemIconTint="#FFFFFFFF"
-        app:itemTextColor="#FFFFFFFF"
-        app:itemTextAppearance="@style/MenuTextStyle"
-        />
+        app:itemTextColor="#FFFFFFFF" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
