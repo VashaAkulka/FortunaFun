@@ -27,11 +27,12 @@
                 app:srcCompat="@drawable/icon_menu" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/restartBet"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="0.2"
                 android:layout_margin="15dp"
+                android:layout_weight="0.2"
+                android:onClick="restartBet"
                 app:srcCompat="@drawable/baseline_cached_24" />
 
             <ImageView
@@ -40,6 +41,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.15"
+                android:onClick="switchSound"
                 app:srcCompat="@drawable/icon_with_sound" />
 
             <LinearLayout
@@ -70,11 +72,11 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/balanceView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="#FFFFFF"
-                        android:gravity="center|top"
-                        android:text="100 FAN"/>
+                        android:gravity="center|top" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -100,6 +102,7 @@
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:backgroundTint="#173d5b"
+            android:enabled="false"
 
             android:clickable="false"
             android:onClick="rotateRoulette"
@@ -133,6 +136,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#e8696b"
                 android:gravity="right|bottom"
+                android:onClick="betOnColor"
                 android:paddingRight="10dp"
                 android:text="2x"
                 android:textColor="#50FFFFFF"
@@ -147,6 +151,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#62ae34"
                 android:gravity="right|bottom"
+                android:onClick="betOnColor"
                 android:paddingRight="10dp"
                 android:text="5x"
                 android:textColor="#50FFFFFF"
@@ -161,6 +166,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#5d6766"
                 android:gravity="right|bottom"
+                android:onClick="betOnColor"
                 android:paddingRight="10dp"
                 android:text="2x"
                 android:textColor="#50FFFFFF"
@@ -179,10 +185,10 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/textViewRed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:text="150 FAN"
                     android:lineSpacingExtra="6dp"
                     android:textColor="#FFFFFF"
                     android:gravity="end" />
@@ -194,10 +200,10 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/textViewGreen"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:text="75 FAN\n75 FAN"
                     android:lineSpacingExtra="6dp"
                     android:textColor="#FFFFFF"
                     android:gravity="end" />
@@ -209,11 +215,11 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/textViewBlack"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:lineSpacingExtra="6dp"
-                    android:text="50 FAN\n50 FAN\n50 FAN"
                     android:textColor="#FFFFFF"
                     android:gravity="end" />
             </LinearLayout>
@@ -271,13 +277,12 @@
                         android:layout_weight="1">
 
                         <TextView
-                            android:id = "@+id/bet"
+                            android:id = "@+id/betView"
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:layout_height="match_parent"
                             android:textColor="#FFFFFF"
-                            android:gravity="center|top"
-                            android:text="1"/>
+                            android:gravity="center|top" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -328,11 +333,11 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/winningView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="#FFFFFF"
-                        android:gravity="center|top"
-                        android:text="100 FAN"/>
+                        android:gravity="center|top" />
                 </LinearLayout>
 
             </LinearLayout>
