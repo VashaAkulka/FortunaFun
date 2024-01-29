@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#18253c"
     android:id="@+id/drawerLayout"
-    tools:context=".MainActivity">
+    tools:context=".RouletteActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 android:layout_margin="15dp"
                 android:layout_weight="0.2"
                 android:onClick="restartBet"
-                app:srcCompat="@drawable/baseline_cached_24" />
+                app:srcCompat="@drawable/icon_refresh" />
 
             <ImageView
                 android:id="@+id/Sound"

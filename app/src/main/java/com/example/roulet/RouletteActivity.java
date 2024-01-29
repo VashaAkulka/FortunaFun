@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class RouletteActivity extends AppCompatActivity {
 
     private int degree = 0;
     MediaPlayer music;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_roulette);
 
 
         Fantiki.ViewFantiki(findViewById(R.id.balanceView));

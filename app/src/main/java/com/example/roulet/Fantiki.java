@@ -1,15 +1,17 @@
 package com.example.roulet;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.TextView;
 
 
 public class Fantiki {
-    static double currentFantiki = 100;
+    static double currentFantiki;
     static double bet = 1;
     static double betOnRed = 0;
     static double betOnGreen = 0;
     static double betOnBlack = 0;
+
 
     static void loseOrWin(String text, View v) {
         TextView winningView = (TextView)v;
@@ -23,6 +25,7 @@ public class Fantiki {
 
         winningView.setText("" + win + " FAN");
         currentFantiki += win;
+        DataBase.updateData(currentFantiki);
     }
 
     static void ViewFantiki(View v) {
