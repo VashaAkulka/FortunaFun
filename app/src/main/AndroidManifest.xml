@@ -12,9 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Roulet"
         tools:targetApi="31">
+
+
+        <activity
+            android:name=".LeaderBord"
+            android:exported="true"/>
+
         <activity
             android:name=".RegistrationActivity"
             android:exported="true" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -25,9 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".RouletteActivity"
             android:exported="true"/>
+
+
     </application>
 
 </manifest>
