@@ -5,8 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.lang.reflect.Array;
-import java.security.Key;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DataBase {
     private static SQLiteDatabase database;
@@ -52,40 +55,23 @@ public class DataBase {
         cursor.close();
     }
 
+    public static Map<String, Double> GetUserData() {
+        String[] projection = {DBHelper.KEY_NAME, DBHelper.KEY_FANTIKI};
+        Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, null, null, null, null, null);
 
+        int indexName = cursor.getColumnIndex(DBHelper.KEY_NAME);
+        int indexFantiki = cursor.getColumnIndex(DBHelper.KEY_FANTIKI);
+        Map<String, Double> map = new HashMap<>();
 
-    private static <T> T[] getColumnData(String columnName, Class<T> clazz) {
-        String[] projection = {columnName};
-        String sortOrder = columnName + " DESC";
-        Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, null, null, null, null, sortOrder, "10");
+        cursor.moveToFirst();
+        do {
+            map.put(cursor.getString(indexName), cursor.getDouble(indexFantiki));
+        } while (cursor.moveToNext());
 
-        T[] data = (T[]) Array.newInstance(clazz, cursor.getCount());
-        if (cursor.moveToFirst()) {
-            int index = cursor.getColumnIndex(columnName);
-            int i = 0;
-            do {
-                if (clazz.equals(String.class)) data[i++] = (T) cursor.getString(index);
-                else data[i++] = (T) Double.valueOf(cursor.getDouble(index));
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return data;
-    }
-
-    public static String[] GetArrayUserName() {
-        return getColumnData(DBHelper.KEY_NAME, String.class);
-    }
-
-    public static double[] GetArrayUserFantik() {
-        Double[] doubleData = getColumnData(DBHelper.KEY_FANTIKI, Double.class);
-
-        double[] data = new double[doubleData.length];
-        for (int i = 0; i < doubleData.length; i++) {
-            data[i] = doubleData[i].doubleValue();
-        }
-
-        return data;
+        return map.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), Map::putAll);
     }
 
 }

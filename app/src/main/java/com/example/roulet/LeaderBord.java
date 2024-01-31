@@ -20,7 +20,7 @@ public class LeaderBord extends AppCompatActivity {
         setContentView(R.layout.activity_leader_bord);
 
         ListView leaderBoard = findViewById(R.id.leader_board);
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), DataBase.GetArrayUserName(), DataBase.GetArrayUserFantik());
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), DataBase.GetUserData());
         leaderBoard.setAdapter(customBaseAdapter);
 
         Menu.MenuInit(findViewById(R.id.navigation_leader_board), this);

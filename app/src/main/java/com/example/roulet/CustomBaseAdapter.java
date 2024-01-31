@@ -8,21 +8,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class CustomBaseAdapter extends BaseAdapter {
 
-    String[] name;
-    double[] count;
+    Map<String, Double> values;
     LayoutInflater layoutInflater;
 
-    public CustomBaseAdapter(Context context, String[] name, double[] count) {
-        this.name = name;
-        this.count = count;
+    public CustomBaseAdapter(Context context, Map<String, Double> values) {
+        this.values = values;
         layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return name.length;
+        return values.size();
     }
 
     @Override
@@ -60,8 +62,11 @@ public class CustomBaseAdapter extends BaseAdapter {
             textNumber.setTextColor(color);
         }
 
-        textName.setText(name[i]);
-        textCount.setText("" + count[i]);
+        String name = (String) values.keySet().toArray()[i];
+        Double count = values.get(name);
+
+        textName.setText(name);
+        textCount.setText("" + count);
         textNumber.setText("#" + (i + 1));
 
         return view;
