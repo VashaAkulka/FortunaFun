@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class Music {
-    static MediaPlayer music;
+    static MediaPlayer music = null;
     static int[] imageIds = {R.drawable.icon_without_sound, R.drawable.icon_with_sound};
     static int currentImageIndex = 0;
 
@@ -27,7 +27,9 @@ public class Music {
     }
 
     public static void musicOFF() {
-        music.stop();
-        currentImageIndex = 0;
+        if (music != null) {
+            music.stop();
+            currentImageIndex = 0;
+        }
     }
 }

@@ -82,31 +82,43 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_margin="20dp">
+                android:layout_margin="15dp">
 
                 <TextView
-                    android:id="@+id/bonus_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:text="Бонус 50$"
                     android:textColor="#FFFFFF"
-                    android:textSize="27dp" />
+                    android:textSize="27dp"
+                    android:gravity="bottom"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:text="Для тех кто хочет отыграться"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11dp" />
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Забрать"
+                    android:id="@+id/take_bonus_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_weight="1"
                     android:backgroundTint="#205D8A"
-                    android:layout_marginTop="20dp"/>
+                    android:gravity="center"
+                    android:onClick="TakeBonus"
+                    android:text="Забрать" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.4" >
+                android:layout_weight="1.2" >
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -166,34 +178,39 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_background_home_page"
-                android:layout_marginEnd="15dp"
+                android:onClick="HappyWheel"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginBottom="15dp"
-                    android:gravity="center"
-                    android:text="Рулетка"
-                    android:textColor="#FFFFFF"
-                    android:textSize="25dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:background="@drawable/wheel"/>
+                    android:layout_height="match_parent"
+                    android:background="@drawable/wheel">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="center"
+                        android:text="Веселый барабан"
+                        android:textColor="#FFFFFF"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_background_home_page"
-                android:layout_marginStart="15dp">
+                android:onClick="MoreLess">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -203,16 +220,16 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="35dp"
+                        android:layout_marginTop="25dp"
                         android:gravity="center"
-                        android:text="HILO"
+                        android:text="Больше Меньше"
                         android:textColor="#FFFFFF"
                         android:textSize="25dp" />
+
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

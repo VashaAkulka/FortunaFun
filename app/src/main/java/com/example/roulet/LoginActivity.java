@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         if (cursor.moveToFirst()) {
             DataBase.LoadData();
 
-            Intent intent = new Intent(this, RouletteActivity.class);
+            Intent intent = new Intent(this, HomePage.class);
             startActivity(intent);
         } else {
             TextView error = findViewById(R.id.error_login);

@@ -17,12 +17,13 @@ public class Menu {
 
                 if (item.getItemId() == R.id.menu_roulette) {
                     intent = new Intent(context, RouletteActivity.class);
-                    context.startActivity(intent);
                 } else if (item.getItemId() == R.id.leader_board) {
                     intent = new Intent(context, LeaderBord.class);
-                    context.startActivity(intent);
+                } else if (item.getItemId() == R.id.home_page) {
+                    intent = new Intent(context, HomePage.class);
                 }
 
+                context.startActivity(intent);
                 return true;
             }
         });
