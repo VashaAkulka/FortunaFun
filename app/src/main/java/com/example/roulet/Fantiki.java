@@ -11,11 +11,11 @@ public class Fantiki {
     static double betOnRed = 0;
     static double betOnGreen = 0;
     static double betOnBlack = 0;
+    static double win = 0;
 
-
-    static void loseOrWin(String text, View v) {
+    static void loseOrWin_Roulette(String text, View v) {
         TextView winningView = (TextView)v;
-        double win = 0;
+        win = 0;
 
         switch (text) {
             case "#e8696b": win = betOnRed * 2; break;
@@ -30,12 +30,12 @@ public class Fantiki {
 
     static void ViewFantiki(View v) {
         TextView balanceView = (TextView)v;
-        balanceView.setText("" + Fantiki.currentFantiki + " FAN");
+        balanceView.setText("" + currentFantiki + " FAN");
     }
 
     static void ViewBet(View v) {
         TextView betView = (TextView)v;
-        betView.setText("" + Fantiki.bet);
+        betView.setText("" + bet);
     }
 
     static void ZeroBetOnColor() {

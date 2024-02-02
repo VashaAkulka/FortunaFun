@@ -15,5 +15,9 @@
         android:icon="@drawable/icon_roulette"
         android:title="Roulette" />
 
+    <item
+        android:id = "@+id/menu_more_less"
+        android:icon="@drawable/icon_hilo"
+        android:title="More Less" />
 
 </menu>

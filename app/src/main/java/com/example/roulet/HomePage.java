@@ -33,7 +33,8 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void MoreLess(View v) {
-
+        Intent intent = new Intent(this, LessMoreActivity.class);
+        startActivity(intent);
     }
 
     public void TakeBonus(View v) {

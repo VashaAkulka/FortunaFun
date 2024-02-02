@@ -4,24 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.android.material.navigation.NavigationView;
 
 
 public class RouletteActivity extends AppCompatActivity {
 
     private int degree = 0;
-    MediaPlayer music;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +32,10 @@ public class RouletteActivity extends AppCompatActivity {
         if (v.getId() == R.id.buttonMinus) {
             if (Fantiki.bet > 1) Fantiki.bet -= Math.pow(10, Math.floor(Math.log10(Fantiki.bet))) / 2;
         }
-        else Fantiki.bet += Math.pow(10, Math.floor(Math.log10(Fantiki.bet))) / 2;
+        else {
+            double buff = Math.pow(10, Math.floor(Math.log10(Fantiki.bet))) / 2;
+            if (buff + Fantiki.bet <= Fantiki.currentFantiki) Fantiki.bet += buff;
+        }
 
         Fantiki.ViewBet(findViewById(R.id.betView));
     }
@@ -67,7 +63,7 @@ public class RouletteActivity extends AppCompatActivity {
                     color = "#62ae34";
             }
 
-            Fantiki.loseOrWin(color, findViewById(R.id.winningView));
+            Fantiki.loseOrWin_Roulette(color, findViewById(R.id.winningView));
             Fantiki.ViewFantiki(findViewById(R.id.balanceView));
 
             v.setBackgroundColor(Color.parseColor(color));

@@ -21,6 +21,8 @@ public class Menu {
                     intent = new Intent(context, LeaderBord.class);
                 } else if (item.getItemId() == R.id.home_page) {
                     intent = new Intent(context, HomePage.class);
+                } else if (item.getItemId() == R.id.menu_more_less) {
+                    intent = new Intent(context, LessMoreActivity.class);
                 }
 
                 context.startActivity(intent);
