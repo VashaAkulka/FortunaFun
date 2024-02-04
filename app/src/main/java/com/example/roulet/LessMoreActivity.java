@@ -3,10 +3,10 @@ package com.example.roulet;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,18 +17,17 @@ import java.util.Random;
 
 
 public class LessMoreActivity extends AppCompatActivity {
-
     final String[] shapes = {"circle", "star", "moon"};
     int number;
 
     Drawable card;
-
     int countSubCards = 0;
-
     ImageView[] subCards;
 
     double up;
     double down;
+
+    float pixels;
 
 
     @Override
@@ -49,6 +48,11 @@ public class LessMoreActivity extends AppCompatActivity {
         randomImage();
         ((ImageView)findViewById(R.id.main_card)).setImageDrawable(card);
         percentCalculate();
+
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int screenWidthPx = displayMetrics.widthPixels;
+        float screenWidthDp = screenWidthPx / displayMetrics.density;
+        pixels = (float) ((screenWidthDp - 80) / 4.6 * 1.5 + 10) * displayMetrics.density + 0.5f;
     }
 
     public void GameMoreLess(View v) {
@@ -67,24 +71,40 @@ public class LessMoreActivity extends AppCompatActivity {
 
             int old_number = number;
             Drawable old_card = card;
-            randomImage();
-            ((ImageView)findViewById(R.id.main_card)).setImageDrawable(card);
 
-            if (old_number <= number && v.getId() == R.id.button_up) {
-                Fantiki.win = Math.round(Fantiki.win * up * 100.0) / 100.0;
-                subCards[countSubCards++].setImageDrawable(old_card);
-            } else if (old_number >= number && v.getId() == R.id.button_down) {
-                Fantiki.win = Math.round(Fantiki.win * down * 100.0) / 100.0;
-                subCards[countSubCards++].setImageDrawable(old_card);
-            } else {
-                Fantiki.win = 0;
-                countSubCards = 0;
-                SwitchButton(true);
-                clearSubCards();
-            }
+            ImageView cardSlide = findViewById(R.id.card_slide);
+            cardSlide.animate().translationXBy(-pixels).setDuration(500).withStartAction(() -> {
+                SwitchTake(false);
+            }).withEndAction(() -> {
+                cardSlide.animate().rotationYBy(-90).setDuration(300).withEndAction(() -> {
+                    randomImage();
+                    cardSlide.setImageDrawable(card);
+                    cardSlide.animate().rotationYBy(90).setDuration(200).withEndAction(() -> {
+                        cardSlide.setImageDrawable(null);
+                        ((ImageView)findViewById(R.id.main_card)).setImageDrawable(card);
+                        cardSlide.animate().translationXBy(pixels).withEndAction(() -> {
+                            cardSlide.setImageResource(R.drawable.back);
 
-            percentCalculate();
-            ((TextView)findViewById(R.id.winningView_more_less)).setText("" + Fantiki.win + " FAN");
+                            if (old_number <= number && v.getId() == R.id.button_up) {
+                                Fantiki.win = Math.round(Fantiki.win * up * 100.0) / 100.0;
+                                subCards[countSubCards++].setImageDrawable(old_card);
+                            } else if (old_number >= number && v.getId() == R.id.button_down) {
+                                Fantiki.win = Math.round(Fantiki.win * down * 100.0) / 100.0;
+                                subCards[countSubCards++].setImageDrawable(old_card);
+                            } else {
+                                Fantiki.win = 0;
+                                countSubCards = 0;
+                                SwitchButton(true);
+                                clearSubCards();
+                            }
+
+                            percentCalculate();
+                            ((TextView)findViewById(R.id.winningView_more_less)).setText("" + Fantiki.win + " FAN");
+                            SwitchTake(true);
+                        }).start();
+                    }).start();
+                }).start();
+            }).start();
     }
 
 
@@ -109,8 +129,14 @@ public class LessMoreActivity extends AppCompatActivity {
         findViewById(R.id.buttonMinus_more_less).setEnabled(fl);
         findViewById(R.id.buttonPlus_more_less).setEnabled(fl);
         findViewById(R.id.change_card).setEnabled(fl);
-        findViewById(R.id.take_more_less).setEnabled(!fl);
     }
+
+    void SwitchTake(boolean fl) {
+        findViewById(R.id.take_more_less).setEnabled(fl);
+        findViewById(R.id.button_down).setEnabled(fl);
+        findViewById(R.id.button_up).setEnabled(fl);
+    }
+
 
     public void changeCard(View v) {
         randomImage();
