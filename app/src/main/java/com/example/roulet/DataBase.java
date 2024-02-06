@@ -5,9 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DataBase {
@@ -73,4 +75,55 @@ public class DataBase {
                 .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), Map::putAll);
     }
 
+    public static void putAchievement(int id) {
+        String[] projection = {DBHelper.KEY_ID_ACHIEVEMENT};
+        String selection = DBHelper.KEY_ID_ACHIEVEMENT + " = ? AND " + DBHelper.KEY_NAME_USER + " = ?";
+        String[] selectionArgs = {String.valueOf(id), LoginActivity.login};
+        Cursor cursor = database.query(DBHelper.TABLE_NAME_ACHIEVEMENT, projection, selection, selectionArgs, null, null, null);
+
+        if (!cursor.moveToFirst()) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(DBHelper.KEY_NAME_USER, LoginActivity.login);
+            contentValues.put(DBHelper.KEY_ID_ACHIEVEMENT, id);
+
+            database.insert(DBHelper.TABLE_NAME_ACHIEVEMENT, null, contentValues);
+        }
+        cursor.close();
+    }
+
+    public static List<Integer> getAchievement() {
+        String[] projection = {DBHelper.KEY_ID_ACHIEVEMENT};
+        String selection = DBHelper.KEY_NAME_USER + " = ?";
+        String[] selectionArgs = {LoginActivity.login};
+        Cursor cursor = database.query(DBHelper.TABLE_NAME_ACHIEVEMENT, projection, selection, selectionArgs, null, null, null);
+
+        List<Integer> idAchievement = new ArrayList<>();
+        if(cursor.moveToFirst()) {
+            int index = cursor.getColumnIndex(DBHelper.KEY_ID_ACHIEVEMENT);
+            do {
+                idAchievement.add(cursor.getInt(index));
+            } while(cursor.moveToNext());
+        }
+        cursor.close();
+
+        return idAchievement;
+     }
+
+     public static int getPercent(int idAchievement) {
+         String countQuery = "SELECT COUNT(*) FROM " + DBHelper.TABLE_NAME;
+         Cursor cursorAll = database.rawQuery(countQuery, null);
+         cursorAll.moveToFirst();
+         int countAll = cursorAll.getInt(0);
+         cursorAll.close();
+
+         String selection = DBHelper.KEY_ID_ACHIEVEMENT + " = ?";
+         String[] selectionArgs = {String.valueOf(idAchievement)};
+         String Query = "SELECT COUNT(*) FROM " + DBHelper.TABLE_NAME_ACHIEVEMENT + " WHERE " + selection;
+         Cursor cursorAchievement = database.rawQuery(Query, selectionArgs);
+         cursorAchievement.moveToFirst();
+         int countAchievement = cursorAchievement.getInt(0);
+         cursorAchievement.close();
+
+         return (int) ((double) countAchievement / countAll * 100);
+     }
 }

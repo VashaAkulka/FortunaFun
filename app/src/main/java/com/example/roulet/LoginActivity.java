@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
         SQLiteDatabase database = DataBase.getDatabase(this);
 
+
         String[] projection = {DBHelper.KEY_FANTIKI};
         String selection = DBHelper.KEY_NAME + " = ? AND " + DBHelper.KEY_PASSWORD + " = ?";
         String[] selectionArgs = {login, password};

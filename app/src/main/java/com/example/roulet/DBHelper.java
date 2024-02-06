@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final int DB_VERSION = 1;
-    public static final String  DB_NAME = "NoKazikDB";
+    public static final String DB_NAME = "NoKazikDB";
 
 
     public static final String TABLE_NAME = "UsersData";
@@ -20,6 +20,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String KEY_FANTIKI = "fantiki";
 
 
+    public static final String TABLE_NAME_ACHIEVEMENT = "Achievement";
+
+    public static final String KEY_ID_ACHIEVEMENT = "id_achievement";
+
+    public static final String KEY_NAME_USER = "name_user";
+
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -28,10 +34,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + " (" + KEY_ID + " integer primary key, " + KEY_NAME + " text, " + KEY_PASSWORD + " text, " +
                 KEY_MAIL + " text, " + KEY_FANTIKI + " real)");
+
+        db.execSQL("create table " + TABLE_NAME_ACHIEVEMENT + " (" + KEY_NAME_USER + " text, " + KEY_ID_ACHIEVEMENT + " integer)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("drop table if exists " + TABLE_NAME);
+        db.execSQL("drop table if exists " + TABLE_NAME_ACHIEVEMENT);
     }
 }

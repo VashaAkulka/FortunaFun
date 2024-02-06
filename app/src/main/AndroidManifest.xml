@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Roulet"
         tools:targetApi="31">
+
+        <activity
+            android:name=".AchievementActivity"
+            android:exported="true" />
         <activity
             android:name=".LessMoreActivity"
             android:exported="false" />

@@ -67,10 +67,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 DataBase.insertData(password, email);
                 DataBase.LoadData();
 
-                Intent intent = new Intent(this, RouletteActivity.class);
+                Intent intent = new Intent(this, HomePage.class);
                 startActivity(intent);
             }
 
+            AchievementActivity.achievementReg();
             cursor.close();
         } else {
             TextView error = findViewById(R.id.error_registration);

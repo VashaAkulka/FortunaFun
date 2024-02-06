@@ -23,6 +23,8 @@ public class Menu {
                     intent = new Intent(context, HomePage.class);
                 } else if (item.getItemId() == R.id.menu_more_less) {
                     intent = new Intent(context, LessMoreActivity.class);
+                } else if (item.getItemId() == R.id.achievements) {
+                    intent = new Intent(context, AchievementActivity.class);
                 }
 
                 context.startActivity(intent);
