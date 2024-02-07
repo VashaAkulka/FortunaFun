@@ -63,7 +63,7 @@ public class RouletteActivity extends AppCompatActivity {
                     color = "#62ae34";
             }
 
-            Fantiki.loseOrWin_Roulette(color, findViewById(R.id.winningView));
+            Fantiki.loseOrWin_Roulette(color, findViewById(R.id.winningView), this);
             Fantiki.ViewFantiki(findViewById(R.id.balanceView));
 
             v.setBackgroundColor(Color.parseColor(color));
@@ -73,7 +73,7 @@ public class RouletteActivity extends AppCompatActivity {
             Fantiki.ZeroBetOnColor();
             switchEnableButton(true);
             findViewById(R.id.restartBet).setEnabled(true);
-
+            if (AchievementActivity.achievementFirstBet()) AchievementActivity.showMessage(this);
         }).withStartAction(() -> {
             switchEnableButton(false);
             v.setEnabled(false);

@@ -1,5 +1,6 @@
 package com.example.roulet;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.TextView;
@@ -13,7 +14,7 @@ public class Fantiki {
     static double betOnBlack = 0;
     static double win = 0;
 
-    static void loseOrWin_Roulette(String text, View v) {
+    static void loseOrWin_Roulette(String text, View v, Context context) {
         TextView winningView = (TextView)v;
         win = 0;
 
@@ -23,9 +24,15 @@ public class Fantiki {
             case "#62ae34": win = betOnGreen * 5;
         }
 
+        if (betOnRed == 0 && betOnBlack == 0 && betOnGreen > 0 && win > 0) {
+            if (AchievementActivity.achievementAllIn()) AchievementActivity.showMessage(context);
+        }
+        if (AchievementActivity.achievementUnluck(betOnRed, betOnGreen, betOnBlack, win)) AchievementActivity.showMessage(context);
+
+
         winningView.setText("" + win + " FAN");
         currentFantiki += win;
-        DataBase.updateData(currentFantiki);
+        DataBase.updateData(currentFantiki, context);
     }
 
     static void ViewFantiki(View v) {

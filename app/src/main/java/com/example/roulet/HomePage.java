@@ -39,8 +39,9 @@ public class HomePage extends AppCompatActivity {
 
     public void TakeBonus(View v) {
         Fantiki.currentFantiki += 50;
-        DataBase.updateData(Fantiki.currentFantiki);
+        DataBase.updateData(Fantiki.currentFantiki, this);
         Fantiki.ViewFantiki(findViewById(R.id.balanceView_home_page));
         findViewById(R.id.take_bonus_button).setEnabled(false);
+        if (AchievementActivity.achievementBonus()) AchievementActivity.showMessage(this);
     }
 }

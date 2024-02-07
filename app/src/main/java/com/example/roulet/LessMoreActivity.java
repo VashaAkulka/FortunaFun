@@ -28,6 +28,7 @@ public class LessMoreActivity extends AppCompatActivity {
     double down;
 
     float pixels;
+    boolean playNow = false;
 
 
     @Override
@@ -56,17 +57,19 @@ public class LessMoreActivity extends AppCompatActivity {
     }
 
     public void GameMoreLess(View v) {
-             if (Fantiki.currentFantiki < Fantiki.bet) {
+             if (Fantiki.currentFantiki < Fantiki.bet && !playNow) {
                   return;
              }
 
             if (countSubCards == 0) {
                 SwitchButton(false);
                 Fantiki.currentFantiki -= Fantiki.bet;
-                DataBase.updateData(Fantiki.currentFantiki);
+                DataBase.updateData(Fantiki.currentFantiki, this);
 
                 Fantiki.win = Fantiki.bet;
                 Fantiki.ViewFantiki(findViewById(R.id.balanceView_more_less));
+                playNow = true;
+                if (AchievementActivity.achievementFirstBet()) AchievementActivity.showMessage(this);
             }
 
             int old_number = number;
@@ -74,6 +77,7 @@ public class LessMoreActivity extends AppCompatActivity {
 
             ImageView cardSlide = findViewById(R.id.card_slide);
             cardSlide.animate().translationXBy(-pixels).setDuration(500).withStartAction(() -> {
+                SwitchDownUp(false);
                 SwitchTake(false);
             }).withEndAction(() -> {
                 cardSlide.animate().rotationYBy(-90).setDuration(300).withEndAction(() -> {
@@ -88,19 +92,25 @@ public class LessMoreActivity extends AppCompatActivity {
                             if (old_number <= number && v.getId() == R.id.button_up) {
                                 Fantiki.win = Math.round(Fantiki.win * up * 100.0) / 100.0;
                                 subCards[countSubCards++].setImageDrawable(old_card);
+                                if (AchievementActivity.achievementCount(countSubCards)) AchievementActivity.showMessage(this);
+                                SwitchTake(true);
                             } else if (old_number >= number && v.getId() == R.id.button_down) {
                                 Fantiki.win = Math.round(Fantiki.win * down * 100.0) / 100.0;
                                 subCards[countSubCards++].setImageDrawable(old_card);
+                                if (AchievementActivity.achievementCount(countSubCards)) AchievementActivity.showMessage(this);
+                                SwitchTake(true);
                             } else {
                                 Fantiki.win = 0;
                                 countSubCards = 0;
                                 SwitchButton(true);
                                 clearSubCards();
+                                SwitchTake(false);
+                                playNow = false;
                             }
 
                             percentCalculate();
                             ((TextView)findViewById(R.id.winningView_more_less)).setText("" + Fantiki.win + " FAN");
-                            SwitchTake(true);
+                            SwitchDownUp(true);
                         }).start();
                     }).start();
                 }).start();
@@ -111,12 +121,15 @@ public class LessMoreActivity extends AppCompatActivity {
     public void Take(View v) {
         Fantiki.currentFantiki += Fantiki.win;
         Fantiki.ViewFantiki(findViewById(R.id.balanceView_more_less));
-        DataBase.updateData(Fantiki.currentFantiki);
+        DataBase.updateData(Fantiki.currentFantiki, this);
 
         Fantiki.win = 0;
         countSubCards = 0;
         SwitchButton(true);
+        SwitchTake(false);
+
         clearSubCards();
+        playNow = false;
     }
 
     public void clearSubCards(){
@@ -131,10 +144,13 @@ public class LessMoreActivity extends AppCompatActivity {
         findViewById(R.id.change_card).setEnabled(fl);
     }
 
-    void SwitchTake(boolean fl) {
-        findViewById(R.id.take_more_less).setEnabled(fl);
+    void SwitchDownUp(boolean fl) {
         findViewById(R.id.button_down).setEnabled(fl);
         findViewById(R.id.button_up).setEnabled(fl);
+    }
+
+    void SwitchTake(boolean fl) {
+        findViewById(R.id.take_more_less).setEnabled(fl);
     }
 
 

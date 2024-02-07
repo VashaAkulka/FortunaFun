@@ -65,6 +65,10 @@ public class CustomBaseAdapter extends BaseAdapter {
         String name = (String) values.keySet().toArray()[i];
         Double count = values.get(name);
 
+        if (name.equals(LoginActivity.login) && i == 0) {
+            if (AchievementActivity.achievementMommy()) AchievementActivity.showMessage(view.getContext());
+        }
+
         textName.setText(name);
         textCount.setText("" + count);
         textNumber.setText("#" + (i + 1));

@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -58,7 +60,63 @@ public class AchievementActivity extends AppCompatActivity {
         }
     }
 
-    public static void achievementReg() {
-        DataBase.putAchievement(0);
+    public static boolean achievementReg() {
+        return DataBase.putAchievement(0);
     }
+    public static boolean achievementBonus() {
+        return DataBase.putAchievement(1);
+    }
+    public static boolean achievementFirstBet() {
+        return DataBase.putAchievement(2);
+    }
+    public static boolean achievementMoney() {
+        if (Fantiki.currentFantiki >= 1000000) {
+            return DataBase.putAchievement(6);
+        } else if (Fantiki.currentFantiki >= 100000) {
+            return DataBase.putAchievement(5);
+        } else if (Fantiki.currentFantiki >= 10000) {
+            return DataBase.putAchievement(4);
+        } else if (Fantiki.currentFantiki >= 1000) {
+            return DataBase.putAchievement(3);
+        }
+        return false;
+    }
+
+    public static boolean achievementCount(int count) {
+        if (count == 12) {
+            return DataBase.putAchievement(8);
+        } else if (count == 4) {
+            return DataBase.putAchievement(7);
+        }
+        return false;
+    }
+
+    public static boolean achievementAllIn() {
+        if (Fantiki.currentFantiki <= 1) {
+            DataBase.putAchievement(9);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean achievementUnluck(double bet1, double bet2, double bet3, double win) {
+        if (bet1 > 0 && bet2 > 0 && bet3 == 0 && win == 0) {
+            return DataBase.putAchievement(10);
+        } else if (bet1 > 0 && bet2 == 0 && bet3 > 0 && win == 0) {
+            return DataBase.putAchievement(10);
+        } else if (bet1 == 0 && bet2 > 0 && bet3 > 0 && win == 0) {
+            return DataBase.putAchievement(10);
+        }
+        return false;
+    }
+
+    public static boolean achievementMommy() {
+        return DataBase.putAchievement(11);
+    }
+
+    public static void showMessage(Context context) {
+        Toast.makeText(context, "Вы получили ачивку!", Toast.LENGTH_LONG).show();
+    }
+
+
 }

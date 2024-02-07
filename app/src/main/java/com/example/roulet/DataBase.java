@@ -23,7 +23,9 @@ public class DataBase {
         return database;
     }
 
-    public static void updateData(double currentValue) {
+    public static void updateData(double currentValue, Context context) {
+        if (AchievementActivity.achievementMoney()) AchievementActivity.showMessage(context);
+
         ContentValues values = new ContentValues();
         values.put(DBHelper.KEY_FANTIKI, currentValue);
 
@@ -75,7 +77,7 @@ public class DataBase {
                 .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), Map::putAll);
     }
 
-    public static void putAchievement(int id) {
+    public static boolean putAchievement(int id) {
         String[] projection = {DBHelper.KEY_ID_ACHIEVEMENT};
         String selection = DBHelper.KEY_ID_ACHIEVEMENT + " = ? AND " + DBHelper.KEY_NAME_USER + " = ?";
         String[] selectionArgs = {String.valueOf(id), LoginActivity.login};
@@ -87,8 +89,10 @@ public class DataBase {
             contentValues.put(DBHelper.KEY_ID_ACHIEVEMENT, id);
 
             database.insert(DBHelper.TABLE_NAME_ACHIEVEMENT, null, contentValues);
+            cursor.close();
+            return true;
         }
-        cursor.close();
+        return false;
     }
 
     public static List<Integer> getAchievement() {

@@ -71,7 +71,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
-            AchievementActivity.achievementReg();
+            if (AchievementActivity.achievementReg()) AchievementActivity.showMessage(this);
             cursor.close();
         } else {
             TextView error = findViewById(R.id.error_registration);
