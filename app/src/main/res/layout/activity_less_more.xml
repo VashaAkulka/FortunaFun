@@ -89,7 +89,6 @@
             android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
@@ -266,9 +265,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-            android:layout_marginTop="20dp">
+            app:layout_constraintVertical_bias="0.0">
 
             <ImageView
                 android:id="@+id/card_7"
@@ -320,8 +321,8 @@
 
         </LinearLayout>
 
-
         <LinearLayout
+            android:id="@+id/linearLayout8"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             app:layout_constraintBottom_toBottomOf="parent">

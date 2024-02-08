@@ -49,30 +49,36 @@ public class RegistrationActivity extends AppCompatActivity {
         TextView emailView = findViewById(R.id.email_registration);
 
         if (passwordView.getText().toString().equals(confirmPasswordView.getText().toString())) {
-            LoginActivity.login = nameView.getText().toString();
-            String password = passwordView.getText().toString();
-            String email = emailView.getText().toString();
+            if (emailView.getText().toString().endsWith("@mail.ru") || emailView.getText().toString().endsWith("@gmail.ru") ||
+                    emailView.getText().toString().endsWith("@tut.by")) {
+                LoginActivity.login = nameView.getText().toString();
+                String password = passwordView.getText().toString();
+                String email = emailView.getText().toString();
 
-            SQLiteDatabase database = DataBase.getDatabase(this);
+                SQLiteDatabase database = DataBase.getDatabase(this);
 
-            String[] projection = {DBHelper.KEY_ID};
-            String selection = DBHelper.KEY_NAME + " = ?";
-            String[] selectionArgs = {LoginActivity.login};
-            Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection,selectionArgs, null, null, null);
+                String[] projection = {DBHelper.KEY_ID};
+                String selection = DBHelper.KEY_NAME + " = ?";
+                String[] selectionArgs = {LoginActivity.login};
+                Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection,selectionArgs, null, null, null);
 
-            if (cursor.moveToFirst()) {
-                TextView error = findViewById(R.id.error_registration);
-                error.setText("Такой пользователь уже существует");
+                if (cursor.moveToFirst()) {
+                    TextView error = findViewById(R.id.error_registration);
+                    error.setText("Такой пользователь уже существует");
+                } else {
+                    DataBase.insertData(password, email);
+                    DataBase.LoadData();
+
+                    Intent intent = new Intent(this, HomePage.class);
+                    startActivity(intent);
+                }
+
+                if (AchievementActivity.achievementReg()) AchievementActivity.showMessage(this);
+                cursor.close();
             } else {
-                DataBase.insertData(password, email);
-                DataBase.LoadData();
-
-                Intent intent = new Intent(this, HomePage.class);
-                startActivity(intent);
+                TextView error = findViewById(R.id.error_registration);
+                error.setText("Неверный формат электронной почты");
             }
-
-            if (AchievementActivity.achievementReg()) AchievementActivity.showMessage(this);
-            cursor.close();
         } else {
             TextView error = findViewById(R.id.error_registration);
             error.setText("Пароли не совпадают");

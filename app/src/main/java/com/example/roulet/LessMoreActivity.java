@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 
@@ -54,6 +56,24 @@ public class LessMoreActivity extends AppCompatActivity {
         int screenWidthPx = displayMetrics.widthPixels;
         float screenWidthDp = screenWidthPx / displayMetrics.density;
         pixels = (float) ((screenWidthDp - 80) / 4.6 * 1.5 + 10) * displayMetrics.density + 0.5f;
+
+        findViewById(R.id.buttonMinus_more_less).setOnLongClickListener(view -> {
+            Fantiki.bet = 0;
+            Fantiki.ViewBet(findViewById(R.id.betView_more_less));
+            return true;
+        });
+
+        findViewById(R.id.buttonPlus_more_less).setOnLongClickListener(view -> {
+            Fantiki.bet = Fantiki.currentFantiki;
+            Fantiki.ViewBet(findViewById(R.id.betView_more_less));
+            return true;
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Music.musicOFF();
     }
 
     public void GameMoreLess(View v) {
@@ -90,13 +110,19 @@ public class LessMoreActivity extends AppCompatActivity {
                             cardSlide.setImageResource(R.drawable.back);
 
                             if (old_number <= number && v.getId() == R.id.button_up) {
-                                Fantiki.win = Math.round(Fantiki.win * up * 100.0) / 100.0;
-                                subCards[countSubCards++].setImageDrawable(old_card);
+                                Fantiki.win = Fantiki.win * up;
+                                Fantiki.win = new BigDecimal(Fantiki.win).setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+                                subCards[countSubCards].setImageDrawable(old_card);
+                                countSubCards = (countSubCards + 1) % 12;
                                 if (AchievementActivity.achievementCount(countSubCards)) AchievementActivity.showMessage(this);
                                 SwitchTake(true);
                             } else if (old_number >= number && v.getId() == R.id.button_down) {
-                                Fantiki.win = Math.round(Fantiki.win * down * 100.0) / 100.0;
-                                subCards[countSubCards++].setImageDrawable(old_card);
+                                Fantiki.win = Fantiki.win * down;
+                                Fantiki.win = new BigDecimal(Fantiki.win).setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+                                subCards[countSubCards].setImageDrawable(old_card);
+                                countSubCards = (countSubCards + 1) % 12;
                                 if (AchievementActivity.achievementCount(countSubCards)) AchievementActivity.showMessage(this);
                                 SwitchTake(true);
                             } else {

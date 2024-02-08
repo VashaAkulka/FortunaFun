@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 
 public class Fantiki {
     static double currentFantiki;
@@ -37,10 +40,12 @@ public class Fantiki {
 
     static void ViewFantiki(View v) {
         TextView balanceView = (TextView)v;
+        currentFantiki = new BigDecimal(currentFantiki).setScale(2, RoundingMode.HALF_UP).doubleValue();
         balanceView.setText("" + currentFantiki + " FAN");
     }
 
     static void ViewBet(View v) {
+        bet = new BigDecimal(bet).setScale(2, RoundingMode.HALF_UP).doubleValue();
         TextView betView = (TextView)v;
         betView.setText("" + bet);
     }

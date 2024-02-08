@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 
 public class RouletteActivity extends AppCompatActivity {
 
@@ -26,6 +29,24 @@ public class RouletteActivity extends AppCompatActivity {
 
         Fantiki.ViewFantiki(findViewById(R.id.balanceView));
         Fantiki.ViewBet(findViewById(R.id.betView));
+
+        findViewById(R.id.buttonMinus).setOnLongClickListener(view -> {
+            Fantiki.bet = 1;
+            Fantiki.ViewBet(findViewById(R.id.betView));
+            return true;
+        });
+
+        findViewById(R.id.buttonPlus).setOnLongClickListener(view -> {
+            Fantiki.bet = Fantiki.currentFantiki;
+            Fantiki.ViewBet(findViewById(R.id.betView));
+            return true;
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Music.musicOFF();
     }
 
     public void changeBet(View v) {
@@ -140,6 +161,7 @@ public class RouletteActivity extends AppCompatActivity {
     }
 
     public void navigationPanel(View v) {
+        restartBet(v);
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         drawerLayout.openDrawer(GravityCompat.START);
     }
