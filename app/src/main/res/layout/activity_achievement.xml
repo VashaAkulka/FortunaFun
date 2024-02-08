@@ -42,8 +42,9 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_margin="10dp"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        app:srcCompat="@drawable/icon_achievement_0" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -88,8 +89,9 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_margin="10dp"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        app:srcCompat="@drawable/icon_achievement_1" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -135,7 +137,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_2"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -181,7 +184,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_3"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -227,7 +231,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_4"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -273,7 +278,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_5"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -319,7 +325,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_6"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -365,7 +372,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_7"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -411,8 +419,9 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_margin="10dp"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        app:srcCompat="@drawable/icon_achievement_8" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -458,7 +467,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_9"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -505,7 +515,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_10"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -551,7 +562,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_11"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
