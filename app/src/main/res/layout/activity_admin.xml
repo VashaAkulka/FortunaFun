@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminActivity"
+    android:background="#173d5b">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.08">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="ID"
+                android:textSize="15sp"
+                android:gravity="bottom"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="Имя"
+                android:textSize="15sp"
+                android:gravity="bottom"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="Пароль"
+                android:textSize="15sp"
+                android:gravity="bottom"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="Почта"
+                android:textSize="15sp"
+                android:gravity="bottom"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="Баланс"
+                android:textSize="15sp"
+                android:gravity="bottom"
+                android:layout_margin="5dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+
+        <ListView
+            android:id="@+id/admin_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

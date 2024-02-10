@@ -54,8 +54,13 @@ public class LoginActivity extends AppCompatActivity {
         TextView passwordView = findViewById(R.id.password_login);
         String password = passwordView.getText().toString();
 
+
         SQLiteDatabase database = DataBase.getDatabase(this);
 
+        if (login.equals("admin") && password.equals("admin")) {
+            Intent intent = new Intent(this, AdminActivity.class);
+            startActivity(intent);
+        }
 
         String[] projection = {DBHelper.KEY_FANTIKI};
         String selection = DBHelper.KEY_NAME + " = ? AND " + DBHelper.KEY_PASSWORD + " = ?";

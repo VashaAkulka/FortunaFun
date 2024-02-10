@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -71,10 +74,11 @@ public class DataBase {
             map.put(cursor.getString(indexName), cursor.getDouble(indexFantiki));
         } while (cursor.moveToNext());
 
-        return map.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(10)
-                .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), Map::putAll);
+            return map.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                    .limit(10)
+                    .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), Map::putAll);
     }
 
     public static boolean putAchievement(int id) {
@@ -113,13 +117,7 @@ public class DataBase {
         return idAchievement;
      }
 
-     public static int getPercent(int idAchievement) {
-         String countQuery = "SELECT COUNT(*) FROM " + DBHelper.TABLE_NAME;
-         Cursor cursorAll = database.rawQuery(countQuery, null);
-         cursorAll.moveToFirst();
-         int countAll = cursorAll.getInt(0);
-         cursorAll.close();
-
+    public static int getPercent(int idAchievement) {
          String selection = DBHelper.KEY_ID_ACHIEVEMENT + " = ?";
          String[] selectionArgs = {String.valueOf(idAchievement)};
          String Query = "SELECT COUNT(*) FROM " + DBHelper.TABLE_NAME_ACHIEVEMENT + " WHERE " + selection;
@@ -128,6 +126,57 @@ public class DataBase {
          int countAchievement = cursorAchievement.getInt(0);
          cursorAchievement.close();
 
-         return (int) ((double) countAchievement / countAll * 100);
-     }
+         return (int) ((double) countAchievement / countAllUser() * 100);
+    }
+
+
+    public static View setCustomAdapter(int i, View view, CustomAdminAdapter adapter) {
+        TextView textId = view.findViewById(R.id.admin_id);
+        TextView textName = view.findViewById(R.id.admin_name);
+        TextView textPassword = view.findViewById(R.id.admin_password);
+        TextView textMail = view.findViewById(R.id.admin_mail);
+        TextView textBalance = view.findViewById(R.id.admin_balance);
+
+        Cursor cursor = database.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
+        cursor.moveToPosition(i);
+
+        int id = cursor.getColumnIndex(DBHelper.KEY_ID);
+        int name = cursor.getColumnIndex(DBHelper.KEY_NAME);
+        int password = cursor.getColumnIndex(DBHelper.KEY_PASSWORD);
+        int mail = cursor.getColumnIndex(DBHelper.KEY_MAIL);
+        int balance = cursor.getColumnIndex(DBHelper.KEY_FANTIKI);
+
+        textId.setText(String.valueOf(cursor.getInt(id)));
+        textName.setText(cursor.getString(name));
+        textPassword.setText(cursor.getString(password));
+        textMail.setText(cursor.getString(mail));
+        textBalance.setText(String.valueOf(cursor.getDouble(balance)));
+
+        ImageView imageView = view.findViewById(R.id.admin_trash);
+        imageView.setOnClickListener(v -> {
+            DataBase.deleteUser(cursor.getInt(id));
+            adapter.notifyDataSetChanged();
+        });
+
+        return view;
+    }
+
+    public static int countAllUser() {
+        String countQuery = "SELECT COUNT(*) FROM " + DBHelper.TABLE_NAME;
+        Cursor cursorAll = database.rawQuery(countQuery, null);
+        if (cursorAll.moveToFirst()) {
+            return cursorAll.getInt(0);
+        }
+        return 0;
+    }
+
+    public static void deleteUser(int i) {
+        String selection = DBHelper.KEY_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(i)};
+        database.delete(DBHelper.TABLE_NAME, selection, selectionArgs);
+
+        String deleteQuery = "DELETE FROM " + DBHelper.TABLE_NAME_ACHIEVEMENT + " WHERE " + DBHelper.KEY_NAME_USER
+                + " IN (SELECT " + DBHelper.KEY_NAME + " FROM " + DBHelper.TABLE_NAME + " WHERE " + DBHelper.KEY_ID + " = ?)";
+        database.execSQL(deleteQuery, selectionArgs);
+    }
 }

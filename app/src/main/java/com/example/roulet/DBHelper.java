@@ -42,5 +42,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("drop table if exists " + TABLE_NAME);
         db.execSQL("drop table if exists " + TABLE_NAME_ACHIEVEMENT);
+        onCreate(db);
     }
 }

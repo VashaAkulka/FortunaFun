@@ -62,19 +62,19 @@ public class RegistrationActivity extends AppCompatActivity {
                 String[] selectionArgs = {LoginActivity.login};
                 Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection,selectionArgs, null, null, null);
 
-                if (cursor.moveToFirst()) {
+                if (cursor.moveToFirst() || LoginActivity.login.equals("admin")) {
                     TextView error = findViewById(R.id.error_registration);
                     error.setText("Такой пользователь уже существует");
                 } else {
                     DataBase.insertData(password, email);
                     DataBase.LoadData();
 
+                    if (AchievementActivity.achievementReg()) AchievementActivity.showMessage(this);
+                    cursor.close();
+
                     Intent intent = new Intent(this, HomePage.class);
                     startActivity(intent);
                 }
-
-                if (AchievementActivity.achievementReg()) AchievementActivity.showMessage(this);
-                cursor.close();
             } else {
                 TextView error = findViewById(R.id.error_registration);
                 error.setText("Неверный формат электронной почты");
