@@ -31,16 +31,28 @@ public class DataBase {
         return database;
     }
 
-    public static void updateData(double currentValue, Context context) {
+    public static void updateData(double currentValue, Context context, double win, double bet) {
         if (AchievementActivity.achievementMoney()) AchievementActivity.showMessage(context);
 
-        ContentValues values = new ContentValues();
-        values.put(DBHelper.KEY_FANTIKI, currentValue);
-
+        String[] projection = {DBHelper.KEY_WIN, DBHelper.KEY_PLAY};
         String selection = DBHelper.KEY_NAME + " = ?";
         String[] selectionArgs = {LoginActivity.login};
+        Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
 
-        database.update(DBHelper.TABLE_NAME, values, selection, selectionArgs);
+        int indexWin = cursor.getColumnIndex(DBHelper.KEY_WIN);
+        int indexBet = cursor.getColumnIndex(DBHelper.KEY_PLAY);
+
+        cursor.moveToFirst();
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.KEY_FANTIKI, currentValue);
+        values.put(DBHelper.KEY_WIN, cursor.getDouble(indexWin) + win);
+        values.put(DBHelper.KEY_PLAY, cursor.getDouble(indexBet) + bet);
+
+        String selectionUpdate = DBHelper.KEY_NAME + " = ?";
+        String[] selectionArgsUpdate = {LoginActivity.login};
+
+        database.update(DBHelper.TABLE_NAME, values, selectionUpdate, selectionArgsUpdate);
+        cursor.close();
     }
 
     public static void insertData(String password, String email) {
@@ -259,5 +271,26 @@ public class DataBase {
         if (cursor.moveToFirst()) {
             return cursor.getString(0);
         } else return null;
+    }
+
+    public static void setText(View view) {
+        String[] projection = {DBHelper.KEY_WIN, DBHelper.KEY_PLAY};
+        String selection = DBHelper.KEY_NAME + " = ?";
+        String[] selectionArgs = {LoginActivity.login};
+        Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+
+        int indexWin = cursor.getColumnIndex(DBHelper.KEY_WIN);
+        int indexBet = cursor.getColumnIndex(DBHelper.KEY_PLAY);
+
+        cursor.moveToFirst();
+        TextView name = view.findViewById(R.id.profile_name);
+        TextView balance = view.findViewById(R.id.profile_balance);
+        TextView win = view.findViewById(R.id.profile_win);
+        TextView bet = view.findViewById(R.id.profile_bet);
+
+        name.setText(LoginActivity.login);
+        balance.setText("Баланс: " + Fantiki.currentFantiki);
+        win.setText("Выйграно: " + cursor.getDouble(indexWin));
+        bet.setText("Поставлено: " + cursor.getDouble(indexBet));
     }
 }

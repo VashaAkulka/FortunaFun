@@ -84,7 +84,7 @@ public class LessMoreActivity extends AppCompatActivity {
             if (countSubCards == 0) {
                 SwitchButton(false);
                 Fantiki.currentFantiki -= Fantiki.bet;
-                DataBase.updateData(Fantiki.currentFantiki, this);
+                DataBase.updateData(Fantiki.currentFantiki, this, 0, Fantiki.bet);
 
                 Fantiki.win = Fantiki.bet;
                 Fantiki.ViewFantiki(findViewById(R.id.balanceView_more_less));
@@ -147,7 +147,7 @@ public class LessMoreActivity extends AppCompatActivity {
     public void Take(View v) {
         Fantiki.currentFantiki += Fantiki.win;
         Fantiki.ViewFantiki(findViewById(R.id.balanceView_more_less));
-        DataBase.updateData(Fantiki.currentFantiki, this);
+        DataBase.updateData(Fantiki.currentFantiki, this, Fantiki.win, 0);
 
         Fantiki.win = 0;
         countSubCards = 0;

@@ -21,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        DataBase.setText(findViewById(R.id.drawerLayout_profile));
 
         String strUri = DataBase.takeAvatar();
         if (strUri != null) {
@@ -30,7 +31,6 @@ public class ProfileActivity extends AppCompatActivity {
                     .into((ImageView)findViewById(R.id.profile_avatar));
         }
 
-
         Menu.MenuInit(findViewById(R.id.navigation_profile), this);
     }
 
@@ -38,8 +38,6 @@ public class ProfileActivity extends AppCompatActivity {
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout_profile);
         drawerLayout.openDrawer(GravityCompat.START);
     }
-
-
 
     public void SetImage(View view) {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
