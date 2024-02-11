@@ -49,6 +49,8 @@ public class DataBase {
         contentValues.put(DBHelper.KEY_PASSWORD, password);
         contentValues.put(DBHelper.KEY_MAIL, email);
         contentValues.put(DBHelper.KEY_FANTIKI, 100.00);
+        contentValues.put(DBHelper.KEY_WIN, 0);
+        contentValues.put(DBHelper.KEY_PLAY, 0);
 
         database.insert(DBHelper.TABLE_NAME, null, contentValues);
     }
@@ -236,5 +238,26 @@ public class DataBase {
         String[] selectionArgs = {String.valueOf(i)};
 
         database.update(DBHelper.TABLE_NAME, values, selection, selectionArgs);
+    }
+
+    public static void editAvatar(String uri) {
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.KEY_AVATAR, uri);
+
+        String selection = DBHelper.KEY_NAME + " = ?";
+        String[] selectionArgs = {LoginActivity.login};
+
+        database.update(DBHelper.TABLE_NAME, values, selection, selectionArgs);
+    }
+
+    public static String takeAvatar() {
+        String[] projection = {DBHelper.KEY_AVATAR};
+        String selection = DBHelper.KEY_NAME + " = ?";
+        String[] selectionArgs = {LoginActivity.login};
+        Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            return cursor.getString(0);
+        } else return null;
     }
 }

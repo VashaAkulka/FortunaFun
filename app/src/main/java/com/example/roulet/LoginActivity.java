@@ -56,6 +56,9 @@ public class LoginActivity extends AppCompatActivity {
 
         SQLiteDatabase database = DataBase.getDatabase(this);
 
+        //database.execSQL("drop table " + DBHelper.TABLE_NAME);
+        //database.execSQL("drop table " + DBHelper.TABLE_NAME_ACHIEVEMENT);
+
         if (login.equals("admin") && password.equals("admin")) {
             Intent intent = new Intent(this, AdminActivity.class);
             startActivity(intent);
