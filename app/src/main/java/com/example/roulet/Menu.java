@@ -25,6 +25,8 @@ public class Menu {
                     intent = new Intent(context, LessMoreActivity.class);
                 } else if (item.getItemId() == R.id.achievements) {
                     intent = new Intent(context, AchievementActivity.class);
+                } else if (item.getItemId() == R.id.profile) {
+                    intent = new Intent(context, ProfileActivity.class);
                 }
 
                 context.startActivity(intent);

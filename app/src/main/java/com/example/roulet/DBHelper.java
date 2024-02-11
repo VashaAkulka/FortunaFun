@@ -18,6 +18,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_MAIL = "mail";
     public static final String KEY_FANTIKI = "fantiki";
+    public static final String KEY_AVATAR = "avatar";
+    public static final String KEY_WIN = "win";
+    public static final String KEY_PLAY = "play";
 
 
     public static final String TABLE_NAME_ACHIEVEMENT = "Achievement";
@@ -33,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + " (" + KEY_ID + " integer primary key, " + KEY_NAME + " text, " + KEY_PASSWORD + " text, " +
-                KEY_MAIL + " text, " + KEY_FANTIKI + " real)");
+                KEY_MAIL + " text, " + KEY_FANTIKI + " real, " + KEY_AVATAR + " text, " + KEY_PLAY + " real, " + KEY_WIN + " real)");
 
         db.execSQL("create table " + TABLE_NAME_ACHIEVEMENT + " (" + KEY_NAME_USER + " text, " + KEY_ID_ACHIEVEMENT + " integer)");
     }

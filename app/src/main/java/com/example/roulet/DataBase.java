@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -218,11 +220,12 @@ public class DataBase {
     public static void deleteUser(int i) {
         String selection = DBHelper.KEY_ID + " = ?";
         String[] selectionArgs = {String.valueOf(i)};
-        database.delete(DBHelper.TABLE_NAME, selection, selectionArgs);
 
         String deleteQuery = "DELETE FROM " + DBHelper.TABLE_NAME_ACHIEVEMENT + " WHERE " + DBHelper.KEY_NAME_USER
                 + " IN (SELECT " + DBHelper.KEY_NAME + " FROM " + DBHelper.TABLE_NAME + " WHERE " + DBHelper.KEY_ID + " = ?)";
         database.execSQL(deleteQuery, selectionArgs);
+
+        database.delete(DBHelper.TABLE_NAME, selection, selectionArgs);
     }
 
     public static void editFantiki(int i, double currentValue) {
