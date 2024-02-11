@@ -23,7 +23,7 @@ public class AdminActivity extends AppCompatActivity {
 
         ListView adminList = findViewById(R.id.admin_list);
 
-        CustomAdminAdapter customAdminAdapter = new CustomAdminAdapter(getApplicationContext());
+        CustomAdminAdapter customAdminAdapter = new CustomAdminAdapter(this);
         adminList.setAdapter(customAdminAdapter);
     }
 

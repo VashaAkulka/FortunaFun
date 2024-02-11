@@ -1,10 +1,13 @@
 package com.example.roulet;
 
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -152,10 +155,52 @@ public class DataBase {
         textMail.setText(cursor.getString(mail));
         textBalance.setText(String.valueOf(cursor.getDouble(balance)));
 
-        ImageView imageView = view.findViewById(R.id.admin_trash);
-        imageView.setOnClickListener(v -> {
-            DataBase.deleteUser(cursor.getInt(id));
-            adapter.notifyDataSetChanged();
+        ImageView imageTrash = view.findViewById(R.id.admin_trash);
+        imageTrash.setOnClickListener(v -> {
+            Dialog dialog = new Dialog(v.getContext());
+            dialog.setContentView(R.layout.trash_dialog);
+            Button yes = dialog.findViewById(R.id.dialog_trash_yes);
+            Button no = dialog.findViewById(R.id.dialog_trash_no);
+
+            yes.setOnClickListener(viewClick -> {
+                DataBase.deleteUser(cursor.getInt(id));
+                adapter.notifyDataSetChanged();
+                dialog.dismiss();
+            });
+
+            no.setOnClickListener(viewClick -> {
+                dialog.dismiss();
+            });
+
+            dialog.show();
+        });
+
+        ImageView imageEdit = view.findViewById(R.id.admin_edit);
+        imageEdit.setOnClickListener(v -> {
+            Dialog dialog = new Dialog(v.getContext());
+            dialog.setContentView(R.layout.edit_dialog);
+
+            Button yes = dialog.findViewById(R.id.dialog_edit);
+            Button no = dialog.findViewById(R.id.dialog_edit_no);
+            EditText editText = dialog.findViewById(R.id.edit_value);
+
+            yes.setOnClickListener(viewClick -> {
+                try {
+                    double currentValue = Double.parseDouble(editText.getText().toString());
+
+                    DataBase.editFantiki(cursor.getInt(id), currentValue);
+                    adapter.notifyDataSetChanged();
+                    dialog.dismiss();
+                } catch (NumberFormatException err) {
+
+                }
+            });
+
+            no.setOnClickListener(viewClick -> {
+                dialog.dismiss();
+            });
+
+            dialog.show();
         });
 
         return view;
@@ -178,5 +223,15 @@ public class DataBase {
         String deleteQuery = "DELETE FROM " + DBHelper.TABLE_NAME_ACHIEVEMENT + " WHERE " + DBHelper.KEY_NAME_USER
                 + " IN (SELECT " + DBHelper.KEY_NAME + " FROM " + DBHelper.TABLE_NAME + " WHERE " + DBHelper.KEY_ID + " = ?)";
         database.execSQL(deleteQuery, selectionArgs);
+    }
+
+    public static void editFantiki(int i, double currentValue) {
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.KEY_FANTIKI, currentValue);
+
+        String selection = DBHelper.KEY_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(i)};
+
+        database.update(DBHelper.TABLE_NAME, values, selection, selectionArgs);
     }
 }

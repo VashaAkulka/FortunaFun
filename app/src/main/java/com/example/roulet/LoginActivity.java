@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
                 break;
             case MotionEvent.ACTION_UP:
                 password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-
         }
     }
 
@@ -60,23 +59,23 @@ public class LoginActivity extends AppCompatActivity {
         if (login.equals("admin") && password.equals("admin")) {
             Intent intent = new Intent(this, AdminActivity.class);
             startActivity(intent);
-        }
-
-        String[] projection = {DBHelper.KEY_FANTIKI};
-        String selection = DBHelper.KEY_NAME + " = ? AND " + DBHelper.KEY_PASSWORD + " = ?";
-        String[] selectionArgs = {login, password};
-        Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
-
-        if (cursor.moveToFirst()) {
-            DataBase.LoadData();
-
-            Intent intent = new Intent(this, HomePage.class);
-            startActivity(intent);
         } else {
-            TextView error = findViewById(R.id.error_login);
-            error.setText("Проверьте введенный данные");
-        }
+            String[] projection = {DBHelper.KEY_FANTIKI};
+            String selection = DBHelper.KEY_NAME + " = ? AND " + DBHelper.KEY_PASSWORD + " = ?";
+            String[] selectionArgs = {login, password};
+            Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
 
-        cursor.close();
+            if (cursor.moveToFirst()) {
+                DataBase.LoadData();
+
+                Intent intent = new Intent(this, HomePage.class);
+                startActivity(intent);
+            } else {
+                TextView error = findViewById(R.id.error_login);
+                error.setText("Проверьте введенный данные");
+            }
+
+            cursor.close();
+        }
     }
 }
