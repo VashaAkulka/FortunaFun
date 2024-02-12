@@ -36,6 +36,7 @@ public class Fantiki {
         winningView.setText("" + win + " FAN");
         currentFantiki += win;
         DataBase.updateData(currentFantiki, context, win, betOnBlack + betOnGreen + betOnRed);
+        DataBase.addToHistory(betOnBlack + betOnGreen + betOnRed, win, "Веселый барабан");
     }
 
     static void ViewFantiki(View v) {

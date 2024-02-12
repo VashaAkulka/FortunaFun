@@ -127,6 +127,7 @@ public class LessMoreActivity extends AppCompatActivity {
                                 SwitchTake(true);
                             } else {
                                 Fantiki.win = 0;
+                                DataBase.addToHistory(Fantiki.bet, Fantiki.win, "Больше Меньше");
                                 countSubCards = 0;
                                 SwitchButton(true);
                                 clearSubCards();
@@ -148,6 +149,7 @@ public class LessMoreActivity extends AppCompatActivity {
         Fantiki.currentFantiki += Fantiki.win;
         Fantiki.ViewFantiki(findViewById(R.id.balanceView_more_less));
         DataBase.updateData(Fantiki.currentFantiki, this, Fantiki.win, 0);
+        DataBase.addToHistory(Fantiki.bet, Fantiki.win, "Больше Меньше");
 
         Fantiki.win = 0;
         countSubCards = 0;
@@ -165,6 +167,7 @@ public class LessMoreActivity extends AppCompatActivity {
     }
 
     void SwitchButton(boolean fl) {
+        findViewById(R.id.navigation_button_less_more).setEnabled(fl);
         findViewById(R.id.buttonMinus_more_less).setEnabled(fl);
         findViewById(R.id.buttonPlus_more_less).setEnabled(fl);
         findViewById(R.id.change_card).setEnabled(fl);

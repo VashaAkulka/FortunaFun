@@ -21,6 +21,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/navigation_button_less_more"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_margin="15dp"

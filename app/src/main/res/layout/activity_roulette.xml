@@ -19,7 +19,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/navigation_button_roulette"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_margin="15dp"

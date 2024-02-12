@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#173d5b">
+    android:background="#18253c">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,8 +15,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:gravity="center|start"
+            android:textSize="13sp"
+            android:gravity="center"
             android:layout_margin="10dp"/>
 
         <TextView
@@ -25,18 +25,28 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:gravity="center|start"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/profile_percent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:gravity="center"
             android:layout_margin="10dp"/>
 
         <TextView
             android:id="@+id/profile_slot"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:gravity="center|start"
+            android:textSize="13sp"
+            android:gravity="center"
             android:layout_margin="10dp"/>
 
     </LinearLayout>

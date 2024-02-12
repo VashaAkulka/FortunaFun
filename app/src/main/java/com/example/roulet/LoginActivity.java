@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //database.execSQL("drop table " + DBHelper.TABLE_NAME);
         //database.execSQL("drop table " + DBHelper.TABLE_NAME_ACHIEVEMENT);
+        //database.execSQL("drop table " + DBHelper.TABLE_NAME_PLAY);
 
         if (login.equals("admin") && password.equals("admin")) {
             Intent intent = new Intent(this, AdminActivity.class);

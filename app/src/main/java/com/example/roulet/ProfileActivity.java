@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.bumptech.glide.Glide;
 
@@ -30,6 +31,16 @@ public class ProfileActivity extends AppCompatActivity {
                     .load(uri)
                     .into((ImageView)findViewById(R.id.profile_avatar));
         }
+
+        ListView profileList = findViewById(R.id.profile_list);
+
+        CustomProfileAdapter customProfileAdapter = new CustomProfileAdapter(this);
+        profileList.setAdapter(customProfileAdapter);
+
+        findViewById(R.id.profile_trash).setOnClickListener(view -> {
+            DataBase.deleteUserHistory();
+            customProfileAdapter.notifyDataSetChanged();
+        });
 
         Menu.MenuInit(findViewById(R.id.navigation_profile), this);
     }

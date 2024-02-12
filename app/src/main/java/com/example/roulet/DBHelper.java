@@ -24,10 +24,19 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public static final String TABLE_NAME_ACHIEVEMENT = "Achievement";
-
     public static final String KEY_ID_ACHIEVEMENT = "id_achievement";
-
     public static final String KEY_NAME_USER = "name_user";
+
+
+    public static final String TABLE_NAME_PLAY = "Play";
+    public static final String KEY_BET_PLAY = "bet_play";
+    public static final String KEY_WIN_PLAY = "win_play";
+    public static final String KEY_SLOT_PLAY = "slot_play";
+
+
+
+
+
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -39,6 +48,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 KEY_MAIL + " text, " + KEY_FANTIKI + " real, " + KEY_AVATAR + " text, " + KEY_PLAY + " real, " + KEY_WIN + " real)");
 
         db.execSQL("create table " + TABLE_NAME_ACHIEVEMENT + " (" + KEY_NAME_USER + " text, " + KEY_ID_ACHIEVEMENT + " integer)");
+
+        db.execSQL("create table " + TABLE_NAME_PLAY + " (" + KEY_NAME_USER + " text, " + KEY_BET_PLAY + " real, " + KEY_WIN_PLAY + " real, " +
+                KEY_SLOT_PLAY + " text)");
     }
 
     @Override

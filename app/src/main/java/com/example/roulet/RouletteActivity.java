@@ -147,6 +147,7 @@ public class RouletteActivity extends AppCompatActivity {
     }
 
     public void switchEnableButton(boolean fl) {
+        findViewById(R.id.navigation_button_roulette).setEnabled(fl);
         findViewById(R.id.buttonBlack).setEnabled(fl);
         findViewById(R.id.buttonRed).setEnabled(fl);
         findViewById(R.id.buttonGreen).setEnabled(fl);

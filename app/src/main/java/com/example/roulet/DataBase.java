@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -43,10 +45,14 @@ public class DataBase {
         int indexBet = cursor.getColumnIndex(DBHelper.KEY_PLAY);
 
         cursor.moveToFirst();
+
+        Double newWin = new BigDecimal(win).setScale(2, RoundingMode.HALF_UP).doubleValue();
+        Double newBet = new BigDecimal(bet).setScale(2, RoundingMode.HALF_UP).doubleValue();
+
         ContentValues values = new ContentValues();
         values.put(DBHelper.KEY_FANTIKI, currentValue);
-        values.put(DBHelper.KEY_WIN, cursor.getDouble(indexWin) + win);
-        values.put(DBHelper.KEY_PLAY, cursor.getDouble(indexBet) + bet);
+        values.put(DBHelper.KEY_WIN, cursor.getDouble(indexWin) + newWin);
+        values.put(DBHelper.KEY_PLAY, cursor.getDouble(indexBet) + newBet);
 
         String selectionUpdate = DBHelper.KEY_NAME + " = ?";
         String[] selectionArgsUpdate = {LoginActivity.login};
@@ -239,6 +245,10 @@ public class DataBase {
                 + " IN (SELECT " + DBHelper.KEY_NAME + " FROM " + DBHelper.TABLE_NAME + " WHERE " + DBHelper.KEY_ID + " = ?)";
         database.execSQL(deleteQuery, selectionArgs);
 
+        deleteQuery = "DELETE FROM " + DBHelper.TABLE_NAME_PLAY + " WHERE " + DBHelper.KEY_NAME_USER
+                + " IN (SELECT " + DBHelper.KEY_NAME + " FROM " + DBHelper.TABLE_NAME + " WHERE " + DBHelper.KEY_ID + " = ?)";
+        database.execSQL(deleteQuery, selectionArgs);
+
         database.delete(DBHelper.TABLE_NAME, selection, selectionArgs);
     }
 
@@ -292,5 +302,57 @@ public class DataBase {
         balance.setText("Баланс: " + Fantiki.currentFantiki);
         win.setText("Выйграно: " + cursor.getDouble(indexWin));
         bet.setText("Поставлено: " + cursor.getDouble(indexBet));
+    }
+
+    public static void addToHistory(double bet, double win, String slot) {
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DBHelper.KEY_NAME_USER, LoginActivity.login);
+        contentValues.put(DBHelper.KEY_BET_PLAY, bet);
+        contentValues.put(DBHelper.KEY_WIN_PLAY, win);
+        contentValues.put(DBHelper.KEY_SLOT_PLAY, slot);
+
+        database.insert(DBHelper.TABLE_NAME_PLAY, null, contentValues);
+    }
+
+    public static int countHistory() {
+        String countQuery = "SELECT COUNT(*) FROM " + DBHelper.TABLE_NAME_PLAY + " WHERE " + DBHelper.KEY_NAME_USER + " = ?";
+        Cursor cursorAll = database.rawQuery(countQuery, new String[]{LoginActivity.login});
+        if (cursorAll.moveToFirst()) {
+            return cursorAll.getInt(0);
+        }
+        return 0;
+    }
+
+    public static View setCustomAdapterHistory(int i, View view) {
+        TextView textBet = view.findViewById(R.id.profile_bet);
+        TextView textWin = view.findViewById(R.id.profile_win);
+        TextView textSlot = view.findViewById(R.id.profile_slot);
+        TextView textPercent = view.findViewById(R.id.profile_percent);
+
+        String[] projection = {DBHelper.KEY_WIN_PLAY, DBHelper.KEY_BET_PLAY, DBHelper.KEY_SLOT_PLAY};
+        String selection = DBHelper.KEY_NAME_USER + " = ?";
+        String[] selectionArgs = {LoginActivity.login};
+        Cursor cursor = database.query(DBHelper.TABLE_NAME_PLAY, projection, selection, selectionArgs, null, null, null);
+
+        cursor.moveToPosition(countHistory() - i - 1);
+        int win = cursor.getColumnIndex(DBHelper.KEY_WIN_PLAY);
+        int bet = cursor.getColumnIndex(DBHelper.KEY_BET_PLAY);
+        int slot = cursor.getColumnIndex(DBHelper.KEY_SLOT_PLAY);
+
+        textBet.setText(String.valueOf(cursor.getDouble(bet)));
+        textWin.setText(String.valueOf(cursor.getDouble(win)));
+        textSlot.setText(cursor.getString(slot));
+
+        Double badPercent = cursor.getDouble(win) / cursor.getDouble(bet);
+        Double percent = new BigDecimal(badPercent).setScale(2, RoundingMode.HALF_UP).doubleValue();
+        textPercent.setText(percent + "x");
+
+        return view;
+    }
+
+    public static void deleteUserHistory() {
+        String deleteQuery = "DELETE FROM " + DBHelper.TABLE_NAME_PLAY + " WHERE " + DBHelper.KEY_NAME_USER + " = ?";
+        database.execSQL(deleteQuery, new String[]{LoginActivity.login});
     }
 }
