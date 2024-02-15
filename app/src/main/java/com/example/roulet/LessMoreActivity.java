@@ -114,16 +114,16 @@ public class LessMoreActivity extends AppCompatActivity {
                                 Fantiki.win = new BigDecimal(Fantiki.win).setScale(2, RoundingMode.HALF_UP).doubleValue();
 
                                 subCards[countSubCards].setImageDrawable(old_card);
-                                countSubCards = (countSubCards + 1) % 12;
-                                if (AchievementActivity.achievementCount(countSubCards)) AchievementActivity.showMessage(this);
+                                if (AchievementActivity.achievementCount(++countSubCards)) AchievementActivity.showMessage(this);
+                                countSubCards %= 12;
                                 SwitchTake(true);
                             } else if (old_number >= number && v.getId() == R.id.button_down) {
                                 Fantiki.win = Fantiki.win * down;
                                 Fantiki.win = new BigDecimal(Fantiki.win).setScale(2, RoundingMode.HALF_UP).doubleValue();
 
                                 subCards[countSubCards].setImageDrawable(old_card);
-                                countSubCards = (countSubCards + 1) % 12;
-                                if (AchievementActivity.achievementCount(countSubCards)) AchievementActivity.showMessage(this);
+                                if (AchievementActivity.achievementCount(++countSubCards)) AchievementActivity.showMessage(this);
+                                countSubCards %= 12;
                                 SwitchTake(true);
                             } else {
                                 Fantiki.win = 0;

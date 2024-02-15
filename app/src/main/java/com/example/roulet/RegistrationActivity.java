@@ -49,7 +49,7 @@ public class RegistrationActivity extends AppCompatActivity {
         TextView emailView = findViewById(R.id.email_registration);
 
         if (passwordView.getText().toString().equals(confirmPasswordView.getText().toString())) {
-            if (emailView.getText().toString().endsWith("@mail.ru") || emailView.getText().toString().endsWith("@gmail.ru") ||
+            if (emailView.getText().toString().endsWith("@mail.ru") || emailView.getText().toString().endsWith("@gmail.com") ||
                     emailView.getText().toString().endsWith("@tut.by")) {
                 LoginActivity.login = nameView.getText().toString();
                 String password = passwordView.getText().toString();

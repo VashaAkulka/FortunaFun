@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -354,5 +355,33 @@ public class DataBase {
     public static void deleteUserHistory() {
         String deleteQuery = "DELETE FROM " + DBHelper.TABLE_NAME_PLAY + " WHERE " + DBHelper.KEY_NAME_USER + " = ?";
         database.execSQL(deleteQuery, new String[]{LoginActivity.login});
+    }
+
+    public static void setProfileLeaderBord(Dialog dialog, String name) {
+        TextView nameView = dialog.findViewById(R.id.profile_name_dialog);
+        TextView balanceView = dialog.findViewById(R.id.profile_balance_dialog);
+        TextView betView = dialog.findViewById(R.id.profile_bet_dialog);
+        TextView winView = dialog.findViewById(R.id.profile_win_dialog);
+        ImageView avatar = dialog.findViewById(R.id.profile_avatar_dialog);
+
+        String[] projection = {DBHelper.KEY_AVATAR, DBHelper.KEY_FANTIKI, DBHelper.KEY_WIN, DBHelper.KEY_PLAY};
+        String selection = DBHelper.KEY_NAME + " = ?";
+        String[] selectionArgs = {name};
+        Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+
+        int indexWin = cursor.getColumnIndex(DBHelper.KEY_WIN);
+        int indexBet = cursor.getColumnIndex(DBHelper.KEY_PLAY);
+        int indexAvatar = cursor.getColumnIndex(DBHelper.KEY_AVATAR);
+        int indexBalance = cursor.getColumnIndex(DBHelper.KEY_FANTIKI);
+
+        cursor.moveToFirst();
+        nameView.setText(name);
+        balanceView.setText("Баланс: " + cursor.getDouble(indexBalance));
+        winView.setText("Выйграно: " + cursor.getDouble(indexWin));
+        betView.setText("Поставлено: " + cursor.getDouble(indexBet));
+
+        if (cursor.getString(indexAvatar) != null) {
+            avatar.setImageURI(Uri.parse(cursor.getString(indexAvatar)));
+        }
     }
 }
