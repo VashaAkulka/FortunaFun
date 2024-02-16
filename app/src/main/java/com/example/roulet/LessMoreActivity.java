@@ -58,7 +58,7 @@ public class LessMoreActivity extends AppCompatActivity {
         pixels = (float) ((screenWidthDp - 80) / 4.6 * 1.5 + 10) * displayMetrics.density + 0.5f;
 
         findViewById(R.id.buttonMinus_more_less).setOnLongClickListener(view -> {
-            Fantiki.bet = 0;
+            Fantiki.bet = 1;
             Fantiki.ViewBet(findViewById(R.id.betView_more_less));
             return true;
         });
