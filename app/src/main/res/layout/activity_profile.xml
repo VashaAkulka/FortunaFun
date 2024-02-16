@@ -139,7 +139,7 @@
                 android:gravity="center"
                 android:text="Ставка"
                 android:textColor="#FFFFFF"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -150,7 +150,7 @@
                 android:gravity="center"
                 android:text="Выигрыш"
                 android:textColor="#FFFFFF"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -161,7 +161,7 @@
                 android:gravity="center"
                 android:text="Процент"
                 android:textColor="#FFFFFF"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -172,7 +172,7 @@
                 android:gravity="center"
                 android:text="Слот"
                 android:textColor="#FFFFFF"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
 
