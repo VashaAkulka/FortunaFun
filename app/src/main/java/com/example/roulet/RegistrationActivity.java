@@ -2,7 +2,6 @@ package com.example.roulet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +16,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        DataBase.getDatabase(this);
 
         findViewById(R.id.password_icon_registration).setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -40,6 +40,7 @@ public class RegistrationActivity extends AppCompatActivity {
     public void signUp(View v) {
         Intent signUp = new Intent(this, LoginActivity.class);
         startActivity(signUp);
+        finish();
     }
 
     public void registration(View v) {
@@ -52,6 +53,8 @@ public class RegistrationActivity extends AppCompatActivity {
             if (emailView.getText().toString().endsWith("@mail.ru") || emailView.getText().toString().endsWith("@gmail.com") ||
                     emailView.getText().toString().endsWith("@tut.by")) {
                 LoginActivity.login = nameView.getText().toString();
+                PreferenceKey.addKey(LoginActivity.login, this);
+
                 String password = passwordView.getText().toString();
                 String email = emailView.getText().toString();
 
@@ -74,6 +77,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(this, HomePage.class);
                     startActivity(intent);
+                    finish();
                 }
             } else {
                 TextView error = findViewById(R.id.error_registration);

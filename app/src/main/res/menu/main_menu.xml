@@ -27,4 +27,8 @@
         android:icon="@drawable/icon_hilo"
         android:title="Больше Меньше" />
 
+    <item
+        android:id = "@+id/exit"
+        android:icon="@drawable/icon_exit"
+        android:title="Выход из аккаунта" />
 </menu>

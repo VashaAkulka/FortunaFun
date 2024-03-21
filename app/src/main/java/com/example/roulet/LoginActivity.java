@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +20,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        DataBase.getDatabase(this);
+        String key = PreferenceKey.getKey(this);
+        if (key != null) {
+            login = key;
+            DataBase.LoadData();
+
+            Intent intent = new Intent(this, HomePage.class);
+            startActivity(intent);
+            finish();
+        }
+
         findViewById(R.id.password_icon_login).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -34,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     public void signIn(View v) {
         Intent signIn = new Intent(this, RegistrationActivity.class);
         startActivity(signIn);
+        finish();
     }
 
     public static void onTouch(View view, MotionEvent motionEvent, TextView password) {
@@ -53,12 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         TextView passwordView = findViewById(R.id.password_login);
         String password = passwordView.getText().toString();
 
-
         SQLiteDatabase database = DataBase.getDatabase(this);
-
-        //database.execSQL("drop table " + DBHelper.TABLE_NAME);
-        //database.execSQL("drop table " + DBHelper.TABLE_NAME_ACHIEVEMENT);
-        //database.execSQL("drop table " + DBHelper.TABLE_NAME_PLAY);
 
         if (login.equals("admin") && password.equals("admin")) {
             Intent intent = new Intent(this, AdminActivity.class);
@@ -70,10 +76,12 @@ public class LoginActivity extends AppCompatActivity {
             Cursor cursor = database.query(DBHelper.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
 
             if (cursor.moveToFirst()) {
+                PreferenceKey.addKey(login, this);
                 DataBase.LoadData();
 
                 Intent intent = new Intent(this, HomePage.class);
                 startActivity(intent);
+                finish();
             } else {
                 TextView error = findViewById(R.id.error_login);
                 error.setText("Проверьте введенный данные");

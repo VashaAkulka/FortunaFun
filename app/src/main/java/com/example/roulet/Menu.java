@@ -27,8 +27,12 @@ public class Menu {
                     intent = new Intent(context, AchievementActivity.class);
                 } else if (item.getItemId() == R.id.profile) {
                     intent = new Intent(context, ProfileActivity.class);
+                } else if (item.getItemId() == R.id.exit) {
+                    PreferenceKey.removeKey(context);
+                    intent = new Intent(context, LoginActivity.class);
                 }
 
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 context.startActivity(intent);
                 return true;
             }
