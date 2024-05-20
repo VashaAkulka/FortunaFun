@@ -28,6 +28,16 @@
         android:title="Больше Меньше" />
 
     <item
+        android:id = "@+id/coinflip"
+        android:icon="@drawable/icons11"
+        android:title="Подбрось монетку" />
+
+    <item
+        android:id = "@+id/baraban"
+        android:icon="@drawable/icons12"
+        android:title="Три в ряд" />
+
+    <item
         android:id = "@+id/exit"
         android:icon="@drawable/icon_exit"
         android:title="Выход из аккаунта" />

@@ -597,6 +597,194 @@
                         android:textColor="#FFFFFFFF"/>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/achievement_13"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/iconsthree"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Неплохо"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Выйграть в три в ряд"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_13"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_14"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icondesyat"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Да ну тебя"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Угадать 10 монет подряд"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_14"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_15"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/iconwhite"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Белое золото"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Поставь все на белую монету и выйграй"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_15"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_16"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icontopor"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Три топора"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Словить 3 семерки"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_16"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

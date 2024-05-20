@@ -30,6 +30,10 @@ public class Menu {
                 } else if (item.getItemId() == R.id.exit) {
                     PreferenceKey.removeKey(context);
                     intent = new Intent(context, LoginActivity.class);
+                } else if (item.getItemId() == R.id.coinflip) {
+                    intent = new Intent(context, MainActivity.class);
+                } else if (item.getItemId() == R.id.baraban) {
+                    intent = new Intent(context, Baraban.class);
                 }
 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

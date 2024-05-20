@@ -30,12 +30,14 @@ public class AchievementActivity extends AppCompatActivity {
         linearLayouts = new LinearLayout[]{findViewById(R.id.achievement_1), findViewById(R.id.achievement_2), findViewById(R.id.achievement_3),
                 findViewById(R.id.achievement_4), findViewById(R.id.achievement_5), findViewById(R.id.achievement_6), findViewById(R.id.achievement_7),
                 findViewById(R.id.achievement_8), findViewById(R.id.achievement_9), findViewById(R.id.achievement_10), findViewById(R.id.achievement_11),
-                findViewById(R.id.achievement_12)};
+                findViewById(R.id.achievement_12), findViewById(R.id.achievement_13), findViewById(R.id.achievement_14), findViewById(R.id.achievement_15),
+                findViewById(R.id.achievement_16)};
 
         textViews = new TextView[]{findViewById(R.id.achievement_percent_1), findViewById(R.id.achievement_percent_2), findViewById(R.id.achievement_percent_3),
                 findViewById(R.id.achievement_percent_4), findViewById(R.id.achievement_percent_5), findViewById(R.id.achievement_percent_6), findViewById(R.id.achievement_percent_7),
                 findViewById(R.id.achievement_percent_8),findViewById(R.id.achievement_percent_9),findViewById(R.id.achievement_percent_10),findViewById(R.id.achievement_percent_11),
-                findViewById(R.id.achievement_percent_12),};
+                findViewById(R.id.achievement_percent_12),findViewById(R.id.achievement_percent_13),findViewById(R.id.achievement_percent_14),findViewById(R.id.achievement_percent_15),
+                findViewById(R.id.achievement_percent_16)};
 
         LightAchievement();
         calculatePercent();
@@ -119,4 +121,28 @@ public class AchievementActivity extends AppCompatActivity {
     }
 
 
+    public static boolean allinnaBeloe(double navsebabki,double currency){
+        if(navsebabki==currency){
+            return DataBase.putAchievement(14);
+        }
+        return false;
+    }
+    public static boolean achivmentThreevriad(int count){
+        if(count ==1){
+            return  DataBase.putAchievement(12);
+        }
+        return false;
+    }
+    public static boolean achivmentcoins(int count){
+        if (count == 10){
+            return DataBase.putAchievement(13);
+
+        }        return false;
+    }
+    public static boolean achievementSeven(int count) {
+        if(count == 4){
+            return DataBase.putAchievement(15);
+        }
+        return false;
+    }
 }
