@@ -37,6 +37,25 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void Baraban(View v) {
+        Intent intent = new Intent(this, Baraban.class);
+        startActivity(intent);
+    }
+
+    public void Coins(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void FlyPlain(View v) {
+        Intent intent = new Intent(this, FlyPlane.class);
+        startActivity(intent);
+    }
+    public void Miner(View v) {
+        Intent intent = new Intent(this, Miner.class);
+        startActivity(intent);
+    }
+
     public void TakeBonus(View v) {
         Fantiki.currentFantiki += 50;
         DataBase.updateData(Fantiki.currentFantiki, this, 0, 0);

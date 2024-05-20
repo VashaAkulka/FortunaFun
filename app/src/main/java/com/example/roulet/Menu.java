@@ -34,6 +34,10 @@ public class Menu {
                     intent = new Intent(context, MainActivity.class);
                 } else if (item.getItemId() == R.id.baraban) {
                     intent = new Intent(context, Baraban.class);
+                } else if (item.getItemId() == R.id.miner) {
+                    intent = new Intent(context, Miner.class);
+                } else if (item.getItemId() == R.id.fly) {
+                    intent = new Intent(context, FlyPlane.class);
                 }
 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

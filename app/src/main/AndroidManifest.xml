@@ -54,5 +54,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"/>
+        <activity
+            android:name=".FlyPlane"
+            android:exported="true"/>
+        <activity
+            android:name=".Miner"
+            android:exported="true"/>
     </application>
 </manifest>

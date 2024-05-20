@@ -785,6 +785,194 @@
                         android:textColor="#FFFFFFFF"/>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/achievement_17"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_13"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Взрывной Рост"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Наберите значение X больше 10"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_17"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_18"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_14"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Стартовый удар"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Нажмите кнопку Старт и начните игру успешно"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_18"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_19"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_15"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Крутой стратег"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Успешно сделайте вывод на игровой машине 'Самолет'"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_19"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_20"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_geo"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Геолог-новичок"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Запустить свою первую игру 'Сапер'"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_20"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

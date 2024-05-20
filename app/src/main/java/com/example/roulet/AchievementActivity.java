@@ -31,13 +31,15 @@ public class AchievementActivity extends AppCompatActivity {
                 findViewById(R.id.achievement_4), findViewById(R.id.achievement_5), findViewById(R.id.achievement_6), findViewById(R.id.achievement_7),
                 findViewById(R.id.achievement_8), findViewById(R.id.achievement_9), findViewById(R.id.achievement_10), findViewById(R.id.achievement_11),
                 findViewById(R.id.achievement_12), findViewById(R.id.achievement_13), findViewById(R.id.achievement_14), findViewById(R.id.achievement_15),
-                findViewById(R.id.achievement_16)};
+                findViewById(R.id.achievement_16), findViewById(R.id.achievement_17), findViewById(R.id.achievement_18), findViewById(R.id.achievement_19),
+                findViewById(R.id.achievement_20)};
 
         textViews = new TextView[]{findViewById(R.id.achievement_percent_1), findViewById(R.id.achievement_percent_2), findViewById(R.id.achievement_percent_3),
                 findViewById(R.id.achievement_percent_4), findViewById(R.id.achievement_percent_5), findViewById(R.id.achievement_percent_6), findViewById(R.id.achievement_percent_7),
                 findViewById(R.id.achievement_percent_8),findViewById(R.id.achievement_percent_9),findViewById(R.id.achievement_percent_10),findViewById(R.id.achievement_percent_11),
                 findViewById(R.id.achievement_percent_12),findViewById(R.id.achievement_percent_13),findViewById(R.id.achievement_percent_14),findViewById(R.id.achievement_percent_15),
-                findViewById(R.id.achievement_percent_16)};
+                findViewById(R.id.achievement_percent_16), findViewById(R.id.achievement_percent_17), findViewById(R.id.achievement_percent_18), findViewById(R.id.achievement_percent_19),
+                findViewById(R.id.achievement_percent_20)};
 
         LightAchievement();
         calculatePercent();
@@ -144,5 +146,17 @@ public class AchievementActivity extends AppCompatActivity {
             return DataBase.putAchievement(15);
         }
         return false;
+    }
+    public static boolean achievementCrash() {
+        return DataBase.putAchievement(16);
+    }
+    public static boolean achievementFirstPlane() {
+        return DataBase.putAchievement(17);
+    }
+    public static boolean achievementFirstWinPlane() {
+        return DataBase.putAchievement(18);
+    }
+    public static boolean achievementFirstPMiner() {
+        return DataBase.putAchievement(19);
     }
 }

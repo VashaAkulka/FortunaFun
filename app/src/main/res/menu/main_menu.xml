@@ -38,6 +38,16 @@
         android:title="Три в ряд" />
 
     <item
+        android:id = "@+id/fly"
+        android:icon="@drawable/flyair"
+        android:title="Самолет" />
+
+    <item
+        android:id = "@+id/miner"
+        android:icon="@drawable/miner_kirk"
+        android:title="Сапер" />
+
+    <item
         android:id = "@+id/exit"
         android:icon="@drawable/icon_exit"
         android:title="Выход из аккаунта" />
