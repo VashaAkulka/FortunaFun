@@ -56,6 +56,16 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void Percent(View v) {
+        Intent intent = new Intent(this, Percent.class);
+        startActivity(intent);
+    }
+
+    public void Racing(View v){
+        Intent intent = new Intent(this, Racing.class);
+        startActivity(intent);
+    }
+
     public void TakeBonus(View v) {
         Fantiki.currentFantiki += 50;
         DataBase.updateData(Fantiki.currentFantiki, this, 0, 0);

@@ -396,13 +396,13 @@
                         android:layout_marginEnd="15dp"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_background_home_page"
-                        android:onClick="HappyWheel"
+                        android:onClick="Percent"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/wheel">
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -410,10 +410,15 @@
                                 android:layout_marginTop="25dp"
                                 android:layout_marginBottom="15dp"
                                 android:gravity="center"
-                                android:text="Веселый барабан"
+                                android:text="Процент"
                                 android:textColor="#FFFFFF"
                                 android:textSize="25dp" />
-
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/percent" />
                         </LinearLayout>
 
 
@@ -425,22 +430,27 @@
                         android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_background_home_page"
-                        android:onClick="MoreLess">
+                        android:onClick="Racing">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/cards">
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="25dp"
                                 android:gravity="center"
-                                android:text="Больше Меньше"
+                                android:text="Гонки"
                                 android:textColor="#FFFFFF"
                                 android:textSize="25dp" />
-
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/dvad" />
                         </LinearLayout>
 
                     </LinearLayout>

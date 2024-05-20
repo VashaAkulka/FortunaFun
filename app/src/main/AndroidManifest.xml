@@ -60,5 +60,11 @@
         <activity
             android:name=".Miner"
             android:exported="true"/>
+        <activity
+            android:name=".Racing"
+            android:exported="true"/>
+        <activity
+            android:name=".Percent"
+            android:exported="true"/>
     </application>
 </manifest>

@@ -14,8 +14,6 @@ import android.widget.Toast;
 import java.util.List;
 
 public class AchievementActivity extends AppCompatActivity {
-
-    final int COUNT_ACHIEVEMENT = 12;
     LinearLayout[] linearLayouts;
     TextView[] textViews;
     List<Integer> lisOfAchievement;
@@ -32,14 +30,16 @@ public class AchievementActivity extends AppCompatActivity {
                 findViewById(R.id.achievement_8), findViewById(R.id.achievement_9), findViewById(R.id.achievement_10), findViewById(R.id.achievement_11),
                 findViewById(R.id.achievement_12), findViewById(R.id.achievement_13), findViewById(R.id.achievement_14), findViewById(R.id.achievement_15),
                 findViewById(R.id.achievement_16), findViewById(R.id.achievement_17), findViewById(R.id.achievement_18), findViewById(R.id.achievement_19),
-                findViewById(R.id.achievement_20)};
+                findViewById(R.id.achievement_20), findViewById(R.id.achievement_21), findViewById(R.id.achievement_22), findViewById(R.id.achievement_23),
+                findViewById(R.id.achievement_24), findViewById(R.id.achievement_25), findViewById(R.id.achievement_26)};
 
         textViews = new TextView[]{findViewById(R.id.achievement_percent_1), findViewById(R.id.achievement_percent_2), findViewById(R.id.achievement_percent_3),
                 findViewById(R.id.achievement_percent_4), findViewById(R.id.achievement_percent_5), findViewById(R.id.achievement_percent_6), findViewById(R.id.achievement_percent_7),
                 findViewById(R.id.achievement_percent_8),findViewById(R.id.achievement_percent_9),findViewById(R.id.achievement_percent_10),findViewById(R.id.achievement_percent_11),
                 findViewById(R.id.achievement_percent_12),findViewById(R.id.achievement_percent_13),findViewById(R.id.achievement_percent_14),findViewById(R.id.achievement_percent_15),
                 findViewById(R.id.achievement_percent_16), findViewById(R.id.achievement_percent_17), findViewById(R.id.achievement_percent_18), findViewById(R.id.achievement_percent_19),
-                findViewById(R.id.achievement_percent_20)};
+                findViewById(R.id.achievement_percent_20), findViewById(R.id.achievement_percent_21), findViewById(R.id.achievement_percent_22), findViewById(R.id.achievement_percent_23),
+                findViewById(R.id.achievement_percent_24), findViewById(R.id.achievement_percent_25), findViewById(R.id.achievement_percent_26)};
 
         LightAchievement();
         calculatePercent();
@@ -51,7 +51,7 @@ public class AchievementActivity extends AppCompatActivity {
     }
 
     public void LightAchievement() {
-        for (int i = 0; i < COUNT_ACHIEVEMENT; i++) {
+        for (int i = 0; i < linearLayouts.length; i++) {
             if (lisOfAchievement.contains(i)) {
                 linearLayouts[i].setAlpha(1);
             }
@@ -158,5 +158,25 @@ public class AchievementActivity extends AppCompatActivity {
     }
     public static boolean achievementFirstPMiner() {
         return DataBase.putAchievement(19);
+    }
+
+
+    public static boolean achievementFirstRace() {
+        return DataBase.putAchievement(20);
+    }
+    public static boolean achievementFirstRaceWin() {
+        return DataBase.putAchievement(21);
+    }
+    public static boolean achievementNewBee() {
+        return DataBase.putAchievement(22);
+    }
+    public static boolean achievementFirstPercent() {
+        return DataBase.putAchievement(23);
+    }
+    public static boolean achievementPercentMiddle() {
+        return DataBase.putAchievement(24);
+    }
+    public static boolean achievementTopPercent() {
+        return DataBase.putAchievement(25);
     }
 }

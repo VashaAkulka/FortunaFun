@@ -973,6 +973,287 @@
                         android:textColor="#FFFFFFFF"/>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/achievement_21"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_16"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Первый заед"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Зайти в слот Гонщики"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_21"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_22"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achievement_17"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Настоящий болельщик"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Выбрать машину, которая выиграла в игре Гонки"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_22"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_23"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achiement_23"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Новичок"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Зайти в игру процент"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_23"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_24"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achiement_22"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Первый раз"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Выиграть в игре процент первый раз"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_24"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_25"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achiement_21"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Опыт не пропьешь"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Выиграть в игре процент при выборе 50+%"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_25"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/achievement_26"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_background_home_page">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/icon_achiement_20"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Гуру процента"
+                            android:gravity="bottom"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="Выиграть в игре процент при выборе 90+%"
+                            android:textColor="#756C6C"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/achievement_percent_26"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:textColor="#FFFFFFFF"/>
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

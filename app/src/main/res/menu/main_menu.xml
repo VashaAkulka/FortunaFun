@@ -48,6 +48,16 @@
         android:title="Сапер" />
 
     <item
+        android:id = "@+id/percent"
+        android:icon="@drawable/icon_percent"
+        android:title="Процент" />
+
+    <item
+        android:id = "@+id/racing"
+        android:icon="@drawable/icon_racing"
+        android:title="Гонки" />
+
+    <item
         android:id = "@+id/exit"
         android:icon="@drawable/icon_exit"
         android:title="Выход из аккаунта" />

@@ -38,6 +38,10 @@ public class Menu {
                     intent = new Intent(context, Miner.class);
                 } else if (item.getItemId() == R.id.fly) {
                     intent = new Intent(context, FlyPlane.class);
+                } else if (item.getItemId() == R.id.percent) {
+                    intent = new Intent(context, Percent.class);
+                } else if (item.getItemId() == R.id.racing) {
+                    intent = new Intent(context, Racing.class);
                 }
 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
